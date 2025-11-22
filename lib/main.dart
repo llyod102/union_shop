@@ -29,8 +29,12 @@ class UnionShopApp extends StatelessWidget {
 class HomeButtonSections extends StatefulWidget {
   final String section;
   final String? functionname;
+  final List<String>? dropdownItems;
   const HomeButtonSections(
-      {super.key, required this.section, this.functionname});
+      {super.key,
+      required this.section,
+      this.functionname,
+      this.dropdownItems});
 
   @override
   State<HomeButtonSections> createState() => _HomeButtonSectionsState();
@@ -39,25 +43,49 @@ class HomeButtonSections extends StatefulWidget {
 class _HomeButtonSectionsState extends State<HomeButtonSections> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ElevatedButton(
-            onPressed: () {},
-            style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.all<Color>(Colors.white)),
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Text(
-                widget.section,
-                style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
+    //if No dropdown items, normal elevated button is returned
+    if (widget.dropdownItems == null) {
+      return Expanded(
+        child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                  backgroundColor:
+                      WidgetStateProperty.all<Color>(Colors.white)),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  widget.section,
+                  style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
               ),
-            ),
-          )),
-    );
+            )),
+      );
+    } else {
+      return Expanded(
+          child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: DropdownMenu<String>(
+          requestFocusOnTap: false,
+          initialSelection: null,
+          hintText: widget.section,
+          textStyle: const TextStyle(
+              fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),
+          dropdownMenuEntries: widget.dropdownItems!
+              .map(
+                (item) => DropdownMenuEntry<String>(
+                  value: item,
+                  label: item,
+                ),
+              )
+              .toList(),
+        ),
+      ));
+    }
   }
 }
 
@@ -130,9 +158,19 @@ class HomeScreen extends StatelessWidget {
                         ),
                         const HomeButtonSections(
                           section: "Shop",
+                          dropdownItems: [
+                            "Clothing",
+                            "Merchandise",
+                            "Halloween",
+                            "Signature & Essentail Range",
+                            "Portsmouth City Collection",
+                            "Pride Collection",
+                            "Graduation"
+                          ],
                         ),
                         const HomeButtonSections(
                           section: "The Print Shack",
+                          dropdownItems: ["About", "Personalization"],
                         ),
                         const HomeButtonSections(
                           section: "SALE!",
