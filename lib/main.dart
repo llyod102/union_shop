@@ -155,7 +155,6 @@ class _HeroSliderState extends State<HeroSlider> {
       width: double.infinity,
       child: Stack(
         children: [
-          // PageView for sliding
           PageView.builder(
             controller: _pageController,
             onPageChanged: (index) {
@@ -166,72 +165,6 @@ class _HeroSliderState extends State<HeroSlider> {
               return _buildSlide(slides[index]);
             },
           ),
-
-          // Left arrow
-          Positioned(
-            left: 16,
-            top: 0,
-            bottom: 0,
-            child: Center(
-              child: IconButton(
-                icon: const Icon(Icons.arrow_back_ios,
-                    color: Colors.white, size: 30),
-                onPressed: () {
-                  if (_currentPage > 0) {
-                    _pageController.previousPage(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                    );
-                  }
-                },
-              ),
-            ),
-          ),
-
-          // Right arrow
-          Positioned(
-            right: 16,
-            top: 0,
-            bottom: 0,
-            child: Center(
-              child: IconButton(
-                icon: const Icon(Icons.arrow_forward_ios,
-                    color: Colors.white, size: 30),
-                onPressed: () {
-                  if (_currentPage < slides.length - 1) {
-                    _pageController.nextPage(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                    );
-                  }
-                },
-              ),
-            ),
-          ),
-
-          // Page indicators (dots)
-          Positioned(
-            bottom: 16,
-            left: 0,
-            right: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                slides.length,
-                (index) => Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 4),
-                  width: 8,
-                  height: 8,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: _currentPage == index
-                        ? Colors.white
-                        : Colors.white.withOpacity(0.4),
-                  ),
-                ),
-              ),
-            ),
-          ),
         ],
       ),
     );
@@ -240,7 +173,6 @@ class _HeroSliderState extends State<HeroSlider> {
   Widget _buildSlide(SlideData slide) {
     return Stack(
       children: [
-        // Background image
         Positioned.fill(
           child: Container(
             decoration: BoxDecoration(
@@ -250,13 +182,10 @@ class _HeroSliderState extends State<HeroSlider> {
               ),
             ),
             child: Container(
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.7),
-              ),
+              decoration: BoxDecoration(color: Colors.black.withOpacity(0.7)),
             ),
           ),
         ),
-        // Content overlay
         Positioned(
           left: 24,
           right: 24,
@@ -468,7 +397,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
 
-            // Hero Section - Slider
+            // Hero Section
             const HeroSlider(),
 
             // Products Section
