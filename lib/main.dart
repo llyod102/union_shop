@@ -203,6 +203,25 @@ class _HeroSliderState extends State<HeroSlider> {
               ),
             ),
           ),
+          Positioned(
+              bottom: 16,
+              right: 0,
+              left: 0,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    slides.length,
+                    (index) => Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      width: 8,
+                      height: 8,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color:
+                            _currentPage == index ? Colors.white : Colors.grey,
+                      ),
+                    ),
+                  )))
         ],
       ),
     );
