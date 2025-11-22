@@ -33,27 +33,25 @@ class HomeButtonSections extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ElevatedButton(
-                onPressed: () {},
-                style: ButtonStyle(
-                    backgroundColor:
-                        WidgetStateProperty.all<Color>(Colors.white)),
-                child: Text(
-                  section,
-                  style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
+    return Expanded(
+      child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ButtonStyle(
+                backgroundColor: WidgetStateProperty.all<Color>(Colors.white)),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                section,
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black),
               ),
-              const SizedBox(width: 4),
-            ]));
+            ),
+          )),
+    );
   }
 }
 
@@ -98,7 +96,7 @@ class HomeScreen extends StatelessWidget {
                   // Main header
                   Expanded(
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(children: [
                         GestureDetector(
                           onTap: () {
@@ -121,7 +119,6 @@ class HomeScreen extends StatelessWidget {
                             },
                           ),
                         ),
-                        const SizedBox(width: 24),
                         const HomeButtonSections(
                           section: "Home",
                         ),
