@@ -26,11 +26,17 @@ class UnionShopApp extends StatelessWidget {
   }
 }
 
-class HomeButtonSections extends StatelessWidget {
+class HomeButtonSections extends StatefulWidget {
   final String section;
+  final String? functionname;
+  const HomeButtonSections(
+      {super.key, required this.section, this.functionname});
 
-  const HomeButtonSections({super.key, required this.section});
+  @override
+  State<HomeButtonSections> createState() => _HomeButtonSectionsState();
+}
 
+class _HomeButtonSectionsState extends State<HomeButtonSections> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -43,7 +49,7 @@ class HomeButtonSections extends StatelessWidget {
             child: FittedBox(
               fit: BoxFit.scaleDown,
               child: Text(
-                section,
+                widget.section,
                 style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
