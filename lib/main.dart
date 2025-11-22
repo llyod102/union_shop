@@ -26,6 +26,20 @@ class UnionShopApp extends StatelessWidget {
   }
 }
 
+class SlideData {
+  final String imageUrl;
+  final String title;
+  final String subtitle;
+  final String buttonText;
+
+  SlideData({
+    required this.imageUrl,
+    required this.title,
+    required this.subtitle,
+    required this.buttonText,
+  });
+}
+
 class HomeButtonSections extends StatefulWidget {
   final String section;
   final String? functionname;
@@ -86,6 +100,73 @@ class _HomeButtonSectionsState extends State<HomeButtonSections> {
         ),
       ));
     }
+  }
+}
+
+class HeroSlider extends StatefulWidget {
+  const HeroSlider({super.key});
+
+  @override
+  State<HeroSlider> createState() => _HeroSliderState();
+}
+
+class _HeroSliderState extends State<HeroSlider> {
+  final PageController _pageController = PageController();
+  int _currentPage = 0;
+  @override
+  final List<SlideData> slides = [
+    SlideData(
+        imageUrl:
+            "https://cdn.pixabay.com/photo/2016/06/20/04/30/asian-man-1468032_1280.jpg",
+        title: "First Page",
+        subtitle: "subtitle",
+        buttonText: "buttonText"),
+    SlideData(
+        imageUrl:
+            "https://cdn.pixabay.com/photo/2016/06/20/04/30/asian-man-1468032_1280.jpg",
+        title: "Second page",
+        subtitle: "subtitle",
+        buttonText: "buttonText"),
+    SlideData(
+        imageUrl:
+            "https://cdn.pixabay.com/photo/2016/06/20/04/30/asian-man-1468032_1280.jpg",
+        title: "Third page",
+        subtitle: "subtitle",
+        buttonText: "buttonText"),
+    SlideData(
+        imageUrl:
+            "https://cdn.pixabay.com/photo/2016/06/20/04/30/asian-man-1468032_1280.jpg",
+        title: "Fourth page",
+        subtitle: "subtitle",
+        buttonText: "buttonText")
+  ];
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 400,
+      width: double.infinity,
+      child: Stack(
+        children: [
+          PageView.builder(
+            controller: _pageController,
+            onPageChanged: (index){
+              setState(() => _currentPage = index);
+            
+            },
+            itemCount: slides.length,
+            itemBuilder: (context, index){
+              return _buildSlide(slides[index]);
+            },
+          ),
+        ],
+      )
   }
 }
 
@@ -261,7 +342,7 @@ class HomeScreen extends StatelessWidget {
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: NetworkImage(
-                            'https://shop.upsu.net/cdn/shop/files/PortsmouthCityPostcard2_1024x1024@2x.jpg?v=1752232561',
+                            'https://cdn.pixabay.com/photo/2016/03/25/09/04/t-shirt-1278404_640.jpg',
                           ),
                           fit: BoxFit.cover,
                         ),
@@ -282,7 +363,7 @@ class HomeScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const Text(
-                          'Placeholder Hero Title',
+                          'Essential Range over 20% Off',
                           style: TextStyle(
                             fontSize: 32,
                             fontWeight: FontWeight.bold,
@@ -292,7 +373,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 16),
                         const Text(
-                          "This is placeholder text for the hero section.",
+                          "Over 20% off our Essential Range! Don't miss out on these amazing deals",
                           style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
@@ -311,7 +392,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           child: const Text(
-                            'BROWSE PRODUCTS',
+                            'Browse Selection',
                             style: TextStyle(fontSize: 14, letterSpacing: 1),
                           ),
                         ),
