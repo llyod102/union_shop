@@ -117,28 +117,29 @@ class _HeroSliderState extends State<HeroSlider> {
   final List<SlideData> slides = [
     SlideData(
         imageUrl:
-            "https://cdn.pixabay.com/photo/2016/06/20/04/30/asian-man-1468032_1280.jpg",
-        title: "First Page",
-        subtitle: "subtitle",
-        buttonText: "buttonText"),
+            "https://cdn.pixabay.com/photo/2016/03/25/09/04/t-shirt-1278404_640.jpg",
+        title: "Essential Range - Over 20% OFF! ",
+        subtitle:
+            "Over 20% off our Essentail Range. Come and grab yours while tock lasts!",
+        buttonText: "Browse Collection"),
     SlideData(
         imageUrl:
-            "https://cdn.pixabay.com/photo/2016/06/20/04/30/asian-man-1468032_1280.jpg",
-        title: "Second page",
-        subtitle: "subtitle",
-        buttonText: "buttonText"),
+            "https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww",
+        title: "The Print Shack",
+        subtitle: "Let's Create something unique",
+        buttonText: "Find Out more"),
     SlideData(
         imageUrl:
-            "https://cdn.pixabay.com/photo/2016/06/20/04/30/asian-man-1468032_1280.jpg",
-        title: "Third page",
-        subtitle: "subtitle",
-        buttonText: "buttonText"),
+            "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cGl6emF8ZW58MHx8MHx8fDA%3D",
+        title: "Hungry?",
+        subtitle: "We Got this!",
+        buttonText: "Order Now"),
     SlideData(
         imageUrl:
-            "https://cdn.pixabay.com/photo/2016/06/20/04/30/asian-man-1468032_1280.jpg",
-        title: "Fourth page",
-        subtitle: "subtitle",
-        buttonText: "buttonText")
+            "https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?cs=srgb&dl=pexels-jvdm-1454806.jpg&fm=jpg",
+        title: "What's your next move...",
+        subtitle: "Are you with us?",
+        buttonText: "Find your Student Accomodation!")
   ];
 
   @override
