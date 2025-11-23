@@ -407,14 +407,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               if (_isSearching) ...[
-                                Flexible(
+                                SizedBox(
+                                  width: 180,
                                   child: TextField(
                                     controller: _searchController,
                                     decoration: const InputDecoration(
                                       hintText: 'Search...',
                                       border: OutlineInputBorder(
                                           borderSide: BorderSide(
-                                              width: double.infinity)),
+                                        width: 1.0,
+                                      )),
                                       contentPadding: EdgeInsets.symmetric(
                                           horizontal: 12, vertical: 8),
                                     ),
