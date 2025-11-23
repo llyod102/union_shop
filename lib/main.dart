@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:union_shop/product_page.dart';
 
 void main() {
@@ -179,6 +178,10 @@ class _HeroSliderState extends State<HeroSlider> {
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
                     );
+                  } else {
+                    _pageController.animateToPage(3,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut);
                   }
                 },
               ),
@@ -198,6 +201,10 @@ class _HeroSliderState extends State<HeroSlider> {
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
                     );
+                  } else {
+                    _pageController.animateToPage(0,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut);
                   }
                 },
               ),
