@@ -406,7 +406,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              if (_isSearching)
+                              if (_isSearching) ...[
                                 Flexible(
                                   child: TextField(
                                     controller: _searchController,
@@ -420,6 +420,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                 ),
+                              ],
                               IconButton(
                                   icon: const Icon(
                                     Icons.search,
@@ -433,6 +434,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                   onPressed: () {
                                     setState(() {
                                       _isSearching = !_isSearching;
+                                      if (!_isSearching) {
+                                        _searchController.clear();
+                                      }
                                     });
                                   }),
                               IconButton(
