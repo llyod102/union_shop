@@ -16,7 +16,7 @@ class UnionShopApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF4d2963)),
       ),
-      home: const HomeScreen(),
+      home: HomeScreen(),
       // By default, the app starts at the '/' route, which is the HomeScreen
       initialRoute: '/',
       // When navigating to '/product', build and return the ProductPage
@@ -310,6 +310,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool _isSearching = false;
+  TextEditingController _searchController = TextEditingController();
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
@@ -371,50 +373,68 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                           ),
                         ),
-                        const HomeButtonSections(
-                          section: "Home",
-                        ),
-                        const HomeButtonSections(
-                          section: "Shop",
-                          dropdownItems: [
-                            "Clothing",
-                            "Merchandise",
-                            "Halloween",
-                            "Signature & Essentail Range",
-                            "Portsmouth City Collection",
-                            "Pride Collection",
-                            "Graduation"
-                          ],
-                        ),
-                        const HomeButtonSections(
-                          section: "The Print Shack",
-                          dropdownItems: ["About", "Personalization"],
-                        ),
-                        const HomeButtonSections(
-                          section: "SALE!",
-                        ),
-                        const HomeButtonSections(
-                          section: "About",
-                        ),
+                        if (!_isSearching) ...[
+                          const HomeButtonSections(
+                            section: "Home",
+                          ),
+                          const HomeButtonSections(
+                            section: "Shop",
+                            dropdownItems: [
+                              "Clothing",
+                              "Merchandise",
+                              "Halloween",
+                              "Signature & Essentail Range",
+                              "Portsmouth City Collection",
+                              "Pride Collection",
+                              "Graduation"
+                            ],
+                          ),
+                          const HomeButtonSections(
+                            section: "The Print Shack",
+                            dropdownItems: ["About", "Personalization"],
+                          ),
+                          const HomeButtonSections(
+                            section: "SALE!",
+                          ),
+                          const HomeButtonSections(
+                            section: "About",
+                          ),
+                        ],
                         const Spacer(),
                         ConstrainedBox(
                           constraints: const BoxConstraints(maxWidth: 600),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
+                              if (_isSearching)
+                                Flexible(
+                                  child: TextField(
+                                    controller: _searchController,
+                                    decoration: const InputDecoration(
+                                      hintText: 'Search...',
+                                      border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              width: double.infinity)),
+                                      contentPadding: EdgeInsets.symmetric(
+                                          horizontal: 12, vertical: 8),
+                                    ),
+                                  ),
+                                ),
                               IconButton(
-                                icon: const Icon(
-                                  Icons.search,
-                                  size: 18,
-                                  color: Colors.grey,
-                                ),
-                                padding: const EdgeInsets.all(8),
-                                constraints: const BoxConstraints(
-                                  minWidth: 32,
-                                  minHeight: 32,
-                                ),
-                                onPressed: placeholderCallbackForButtons,
-                              ),
+                                  icon: const Icon(
+                                    Icons.search,
+                                    size: 18,
+                                    color: Colors.grey,
+                                  ),
+                                  constraints: const BoxConstraints(
+                                    minWidth: 32,
+                                    minHeight: 32,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      _isSearching = !_isSearching;
+                                    });
+                                  }),
                               IconButton(
                                 icon: const Icon(
                                   Icons.person_outline,
