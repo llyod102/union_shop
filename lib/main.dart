@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/product_page.dart';
+import 'dart:async';
 
 void main() {
   runApp(const UnionShopApp());
@@ -113,7 +114,8 @@ class HeroSlider extends StatefulWidget {
 class _HeroSliderState extends State<HeroSlider> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
-  @override
+  Timer? timer;
+
   final List<SlideData> slides = [
     SlideData(
         imageUrl:
@@ -144,8 +146,29 @@ class _HeroSliderState extends State<HeroSlider> {
 
   @override
   void dispose() {
+    timer?.cancel();
     _pageController.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _startAutoPlay();
+  }
+
+  void _startAutoPlay() {
+    timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+      if (_currentPage < slides.length - 1) {
+        _pageController.nextPage(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInOut);
+      } else {
+        _pageController.animateToPage(0,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInOut);
+      }
+    });
   }
 
   @override
