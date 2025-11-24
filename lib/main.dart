@@ -56,6 +56,14 @@ class HomeButtonSections extends StatefulWidget {
 }
 
 class _HomeButtonSectionsState extends State<HomeButtonSections> {
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     //if No dropdown items, normal elevated button is returned
@@ -85,11 +93,20 @@ class _HomeButtonSectionsState extends State<HomeButtonSections> {
           child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: DropdownMenu<String>(
+          controller: _controller,
           requestFocusOnTap: false,
           initialSelection: null,
           hintText: widget.section,
           textStyle: const TextStyle(
               fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),
+          onSelected: (String? value) {
+            if (value != null) {
+              Navigator.pushNamed(context, '/product');
+              Future.delayed(Duration.zero, () {
+                _controller.clear();
+              });
+            }
+          },
           dropdownMenuEntries: widget.dropdownItems!
               .map(
                 (item) => DropdownMenuEntry<String>(
