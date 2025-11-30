@@ -326,6 +326,12 @@ class _HeroSliderState extends State<HeroSlider> {
                     await launchUrlString(url,
                         mode: LaunchMode.platformDefault);
                     return;
+                  } else if (slide.buttonText.toLowerCase() ==
+                      "find your student accomodation!") {
+                    const url = 'https://www.unitestudents.com';
+                    await launchUrlString(url,
+                        mode: LaunchMode.platformDefault);
+                    return;
                   }
                 },
                 style: ElevatedButton.styleFrom(
