@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:union_shop/product_page.dart';
 import 'dart:async';
 
@@ -319,8 +321,13 @@ class _HeroSliderState extends State<HeroSlider> {
               ),
               const SizedBox(height: 32),
               ElevatedButton(
-                onPressed: () {
-                  // Handle button press for this specific slide
+                onPressed: () async {
+                  if (slide.buttonText.toLowerCase() == 'order now') {
+                    const url = 'https://www.dominos.co.uk/';
+                    await launchUrlString(url,
+                        mode: LaunchMode.platformDefault);
+                    return;
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF4d2963),
