@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:union_shop/product_page.dart';
+import 'package:union_shop/about_page.dart';
 import 'dart:async';
 
 void main() {
@@ -23,7 +24,10 @@ class UnionShopApp extends StatelessWidget {
       initialRoute: '/',
       // When navigating to '/product', build and return the ProductPage
       // In your browser, try this link: http://localhost:49856/#/product
-      routes: {'/product': (context) => const ProductPage()},
+      routes: {
+        '/product': (context) => const ProductPage(),
+        '/about': (context) => AboutPage(),
+      },
     );
   }
 }
@@ -76,6 +80,8 @@ class _HomeButtonSectionsState extends State<HomeButtonSections> {
                 if (widget.section.toLowerCase() == 'home') {
                   Navigator.pushNamedAndRemoveUntil(
                       context, '/', (route) => false);
+                } else if (widget.section.toLowerCase() == 'about') {
+                  Navigator.pushNamed(context, '/about');
                 }
               },
               style: ButtonStyle(
