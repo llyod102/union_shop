@@ -67,13 +67,17 @@ class _HomeButtonSectionsState extends State<HomeButtonSections> {
 
   @override
   Widget build(BuildContext context) {
-    //if No dropdown items, normal elevated button is returned
     if (widget.dropdownItems == null) {
       return Expanded(
         child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                if (widget.section.toLowerCase() == 'home') {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/', (route) => false);
+                }
+              },
               style: ButtonStyle(
                   backgroundColor:
                       WidgetStateProperty.all<Color>(Colors.white)),
