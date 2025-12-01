@@ -613,7 +613,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // Footer
             Container(
               width: double.infinity,
-              color: Colors.grey[50],
+              color: const Color.fromARGB(54, 250, 250, 250),
               padding: const EdgeInsets.all(24),
               child: const Text(
                 'Placeholder Footer',
