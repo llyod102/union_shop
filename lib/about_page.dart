@@ -21,17 +21,14 @@ class _AboutPageState extends State<AboutPage> {
     _personalisationTap.dispose();
     super.dispose();
   }
-   @override
+
+  @override
   void initState() {
     super.initState();
     _personalisationTap = TapGestureRecognizer()
       ..onTap = () {
-        Navigator.pushNamed(context, '/personilisation');
-        
-          
-
+        Navigator.pushNamed(context, '/personalisation');
       };
-
   }
 
   void navigateToHome(BuildContext context) {
@@ -222,11 +219,10 @@ class _AboutPageState extends State<AboutPage> {
             Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(40),
-                child:  Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     const Text('Welcome to the Union Shop!'),
-                    
                     RichText(
                       text: TextSpan(
                         style: const TextStyle(color: Colors.black),
@@ -411,8 +407,6 @@ class _AboutPageState extends State<AboutPage> {
           ],
         ),
       ),
-    
     );
   }
-  }
-
+}
