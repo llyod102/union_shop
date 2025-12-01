@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:union_shop/main.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
