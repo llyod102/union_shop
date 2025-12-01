@@ -1,37 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/main.dart';
-import 'package:flutter/gestures.dart';
 
-class AboutPage extends StatefulWidget {
-  const AboutPage({super.key});
+
+class PersonilisationPage extends StatefulWidget {
+  const PersonilisationPage({super.key});
 
   @override
-  State<AboutPage> createState() => _AboutPageState();
+  State<PersonilisationPage> createState() => _PersonilisationPageState();
 }
 
-class _AboutPageState extends State<AboutPage> {
+class _PersonilisationPageState extends State<PersonilisationPage> {
   bool _isSearching = false;
   final TextEditingController _searchController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  late TapGestureRecognizer _personalisationTap;
+
+
+
   @override
   void dispose() {
     _searchController.dispose();
     _emailController.dispose();
-    _personalisationTap.dispose();
+
     super.dispose();
-  }
-   @override
-  void initState() {
-    super.initState();
-    _personalisationTap = TapGestureRecognizer()
-      ..onTap = () {
-        Navigator.pushNamed(context, '/personilisation');
-        
-          
-
-      };
-
   }
 
   void navigateToHome(BuildContext context) {
@@ -213,49 +203,9 @@ class _AboutPageState extends State<AboutPage> {
                 padding: const EdgeInsets.all(20),
                 child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('About us',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 40)),
-                  ],
+
                 )),
-            Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(40),
-                child:  Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Text('Welcome to the Union Shop!'),
-                    
-                    RichText(
-                      text: TextSpan(
-                        style: const TextStyle(color: Colors.black),
-                        children: [
-                          const TextSpan(
-                            text:
-                                'We\'re dedicated to giving you the very best University branded products, with a range of clothing and merchandise available to shop all year round! We even offer an exclusive ',
-                          ),
-                          TextSpan(
-                            text: 'personalisation service',
-                            style: const TextStyle(
-                              color: Colors.blue,
-                              decoration: TextDecoration.underline,
-                            ),
-                            recognizer: _personalisationTap,
-                          ),
-                          const TextSpan(text: '!'),
-                        ],
-                      ),
-                    ),
-                    const Text(
-                        'All online purchases are available for delivery or instore collection!'),
-                    const Text(
-                        'We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don’t hesitate to contact us at hello@upsu.net.'),
-                    const Text('Happy shopping!'),
-                    const Text('The Union Shop & Reception Team​​​​​​​​​'),
-                  ],
-                )),
-            Container(
+                 Container(
               width: double.infinity,
               color: const Color.fromARGB(29, 250, 250, 250),
               padding: const EdgeInsets.all(5),
@@ -411,8 +361,6 @@ class _AboutPageState extends State<AboutPage> {
           ],
         ),
       ),
-    
     );
   }
-  }
-
+}
