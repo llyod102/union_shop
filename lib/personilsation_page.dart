@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/main.dart';
 
-class AboutPage extends StatefulWidget {
-  const AboutPage({super.key});
+class PersonilsationPage extends StatefulWidget {
+  const PersonilsationPage({super.key});
 
   @override
-  State<AboutPage> createState() => _AboutPageState();
+  State<PersonilsationPage> createState() => _PersonilsationPageState();
 }
 
-class _AboutPageState extends State<AboutPage> {
+class _PersonilsationPageState extends State<PersonilsationPage> {
   bool _isSearching = false;
   final TextEditingController _searchController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -193,35 +193,6 @@ class _AboutPageState extends State<AboutPage> {
                 ],
               ),
             ),
-            //About Us
-            Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(20),
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('About us',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 40)),
-                  ],
-                )),
-            Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(40),
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text('Welcome to the Union Shop!'),
-                    Text(
-                        'We’re dedicated to giving you the very best University branded products, with a range of clothing and merchandise available to shop all year round! We even offer an exclusive personalisation service!'),
-                    Text(
-                        'All online purchases are available for delivery or instore collection!'),
-                    Text(
-                        'We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don’t hesitate to contact us at hello@upsu.net.'),
-                    Text('Happy shopping!'),
-                    Text('The Union Shop & Reception Team​​​​​​​​​'),
-                  ],
-                )),
             Container(
               width: double.infinity,
               color: const Color.fromARGB(29, 250, 250, 250),
@@ -339,7 +310,6 @@ class _AboutPageState extends State<AboutPage> {
                 ),
                 Expanded(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const Text(
                         'Lastest Offers',

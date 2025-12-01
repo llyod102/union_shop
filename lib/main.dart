@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:union_shop/product_page.dart';
 import 'package:union_shop/about_page.dart';
+import 'package:union_shop/personilsation_page.dart';
 import 'dart:async';
 
 void main() {
@@ -26,7 +27,8 @@ class UnionShopApp extends StatelessWidget {
       // In your browser, try this link: http://localhost:49856/#/product
       routes: {
         '/product': (context) => const ProductPage(),
-        '/about': (context) => AboutPage(),
+        '/about': (context) => const AboutPage(),
+        '/personalisation': (context) => const PersonilsationPage(),
       },
     );
   }
@@ -743,8 +745,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: 180,
+                          Expanded(
                             child: TextField(
                               controller: _emailController,
                               decoration: const InputDecoration(
@@ -756,7 +757,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                       horizontal: 12, vertical: 8)),
                             ),
                           ),
-                          const SizedBox(width: 10),
                           ElevatedButton(
                               onPressed: () {}, child: const Text('Subscribe'))
                         ],
