@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:union_shop/product_page.dart';
 import 'package:union_shop/about_page.dart';
+<<<<<<< HEAD
 import 'package:union_shop/personilsation_page.dart';
+=======
+import 'package:union_shop/personilisation.dart';
+>>>>>>> 79a2084e5bbbcd0fff4c92eec8ebf2d847ae6232
 import 'dart:async';
 
 void main() {
@@ -28,7 +32,11 @@ class UnionShopApp extends StatelessWidget {
       routes: {
         '/product': (context) => const ProductPage(),
         '/about': (context) => const AboutPage(),
+<<<<<<< HEAD
         '/personalisation': (context) => const PersonilsationPage(),
+=======
+        '/personilisation': (context) => const PersonilisationPage(),
+>>>>>>> 79a2084e5bbbcd0fff4c92eec8ebf2d847ae6232
       },
     );
   }
