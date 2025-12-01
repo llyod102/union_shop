@@ -374,6 +374,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool _isSearching = false;
   TextEditingController _searchController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
@@ -615,8 +616,8 @@ class _HomeScreenState extends State<HomeScreen> {
               width: double.infinity,
               color: const Color.fromARGB(29, 250, 250, 250),
               padding: const EdgeInsets.all(5),
-              child: const Row(children: [
-                Expanded(
+              child: Row(children: [
+                const Expanded(
                   child: Column(
                     children: [
                       Text(
@@ -698,7 +699,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: Column(
                     children: [
                       Text(
@@ -729,16 +730,37 @@ class _HomeScreenState extends State<HomeScreen> {
                 Expanded(
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         'Lastest Offers',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 16,
                             fontWeight: FontWeight.w600),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 180,
+                            child: TextField(
+                              controller: _emailController,
+                              decoration: const InputDecoration(
+                                  hintText: "Enter your email",
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(width: 1.0),
+                                  ),
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 8)),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          ElevatedButton(
+                              onPressed: () {}, child: const Text('Subscribe'))
+                        ],
+                      )
                     ],
                   ),
                 ),

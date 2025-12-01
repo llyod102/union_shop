@@ -11,10 +11,12 @@ class AboutPage extends StatefulWidget {
 class _AboutPageState extends State<AboutPage> {
   bool _isSearching = false;
   final TextEditingController _searchController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
   @override
   void dispose() {
     _searchController.dispose();
+    _emailController.dispose();
     super.dispose();
   }
 
@@ -224,8 +226,8 @@ class _AboutPageState extends State<AboutPage> {
               width: double.infinity,
               color: const Color.fromARGB(29, 250, 250, 250),
               padding: const EdgeInsets.all(5),
-              child: const Row(children: [
-                Expanded(
+              child: Row(children: [
+                const Expanded(
                   child: Column(
                     children: [
                       Text(
@@ -307,7 +309,7 @@ class _AboutPageState extends State<AboutPage> {
                     ],
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: Column(
                     children: [
                       Text(
@@ -337,16 +339,38 @@ class _AboutPageState extends State<AboutPage> {
                 ),
                 Expanded(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'Lastest Offers',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 16,
                             fontWeight: FontWeight.w600),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 180,
+                            child: TextField(
+                              controller: _emailController,
+                              decoration: const InputDecoration(
+                                  hintText: "Enter your email",
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(width: 1.0),
+                                  ),
+                                  contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 8)),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          ElevatedButton(
+                              onPressed: () {}, child: const Text('Subscribe'))
+                        ],
                       ),
                     ],
                   ),
