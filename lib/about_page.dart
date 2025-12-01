@@ -239,7 +239,7 @@ class _AboutPageState extends State<AboutPage> {
                         height: 10,
                       ),
                       Text(
-                        'Placeholder Footer',
+                        '❄️ Winter Break Closure Dates ❄️',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 16,
@@ -249,7 +249,56 @@ class _AboutPageState extends State<AboutPage> {
                         height: 10,
                       ),
                       Text(
-                        'Placeholder Footer',
+                        'Closing 4pm 19/12/2025',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        'Reopening 10am 05/01/2026',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        '----------------------------',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        '(Term Time)',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        'Monday - Friday 10am - 4pm',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        '(Outside of Term Time/ Consolidation weeks)',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        'Monday - Friday 10am - 3pm',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        'Purchase Online 24/7',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 16,
@@ -262,7 +311,7 @@ class _AboutPageState extends State<AboutPage> {
                   child: Column(
                     children: [
                       Text(
-                        'Placeholder Footer',
+                        'Help & Information',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 16,
@@ -271,22 +320,17 @@ class _AboutPageState extends State<AboutPage> {
                       SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        'Placeholder Footer',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
+                      SizedBox(
+                        height: 75,
+                        child: HomeButtonSections(section: 'Search'),
                       ),
                       SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        'Placeholder Footer',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
+                      SizedBox(
+                        height: 75,
+                        child: HomeButtonSections(
+                            section: 'Terms & Conditions of Sale Policy'),
                       ),
                     ],
                   ),
@@ -295,7 +339,7 @@ class _AboutPageState extends State<AboutPage> {
                   child: Column(
                     children: [
                       Text(
-                        'Placeholder Footer',
+                        'Lastest Offers',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 16,
@@ -303,23 +347,6 @@ class _AboutPageState extends State<AboutPage> {
                       ),
                       SizedBox(
                         height: 10,
-                      ),
-                      Text(
-                        'Placeholder Footer',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Placeholder Footer',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
                       ),
                     ],
                   ),
