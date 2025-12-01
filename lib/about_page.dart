@@ -354,8 +354,7 @@ class _AboutPageState extends State<AboutPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: 180,
+                          Expanded(
                             child: TextField(
                               controller: _emailController,
                               decoration: const InputDecoration(
@@ -367,7 +366,6 @@ class _AboutPageState extends State<AboutPage> {
                                       horizontal: 12, vertical: 8)),
                             ),
                           ),
-                          const SizedBox(width: 10),
                           ElevatedButton(
                               onPressed: () {}, child: const Text('Subscribe'))
                         ],
