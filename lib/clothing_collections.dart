@@ -195,6 +195,23 @@ class _ClothingCollectionsState extends State<ClothingCollections> {
             ),
             Container(
               width: double.infinity,
+              padding: const EdgeInsets.all(20),
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Collections',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: double.infinity,
               color: const Color.fromARGB(29, 250, 250, 250),
               padding: const EdgeInsets.all(5),
               child: Row(children: [
@@ -344,7 +361,7 @@ class _ClothingCollectionsState extends State<ClothingCollections> {
                   ),
                 ),
               ]),
-            )
+            ),
           ],
         ),
       ),
