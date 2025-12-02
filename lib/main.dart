@@ -803,7 +803,9 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
+          SizedBox(
+            height: 800,
+            width: double.infinity,
             child: Image.network(
               imageUrl,
               fit: BoxFit.cover,
