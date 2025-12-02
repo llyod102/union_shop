@@ -232,7 +232,7 @@ class _AboutPageState extends State<AboutPage> {
                                 'We\'re dedicated to giving you the very best University branded products, with a range of clothing and merchandise available to shop all year round! We even offer an exclusive ',
                           ),
                           TextSpan(
-                            text: 'personalisation service',
+                            text: 'personailisation service',
                             style: const TextStyle(
                               color: Colors.blue,
                               decoration: TextDecoration.underline,
