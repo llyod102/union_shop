@@ -4,6 +4,10 @@ import 'package:union_shop/product_page.dart';
 import 'package:union_shop/about_page.dart';
 import 'package:union_shop/personilsation_page.dart';
 import 'package:union_shop/clothing_collections.dart';
+import 'package:union_shop/tops.dart';
+import 'package:union_shop/hoodies.dart';
+import 'package:union_shop/everdayitems.dart';
+import 'package:union_shop/merchandise.dart';
 
 import 'dart:async';
 
@@ -32,6 +36,10 @@ class UnionShopApp extends StatelessWidget {
         '/about': (context) => const AboutPage(),
         '/personalisation': (context) => const PersonilsationPage(),
         '/clothing_collections': (context) => const ClothingCollections(),
+        '/everdayitems': (context) => const Everdayitems(),
+        '/hoodies': (context) => const Hoodies(),
+        '/tops': (context) => const Tops(),
+        '/merchandise': (context) => const Merchandise(),
       },
     );
   }
@@ -786,19 +794,21 @@ class ProductCard extends StatelessWidget {
   final String title;
   final String price;
   final String imageUrl;
+  final String? route;
 
   const ProductCard({
     super.key,
     required this.title,
     required this.price,
     required this.imageUrl,
+    this.route,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/product');
+        Navigator.pushNamed(context, route ?? '/product');
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
