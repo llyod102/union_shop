@@ -202,25 +202,25 @@ class _TopsState extends State<Tops> {
               children: const [
                 ProductCard(
                   title: 'Black Shirt',
-                  price: '20.00',
+                  price: '£20.00',
                   imageUrl:
                       'https://copilot.microsoft.com/th/id/BCO.02f7f730-06eb-4613-a1ca-8c516e7e3112.png',
                 ),
                 ProductCard(
                   title: 'White Shirt',
-                  price: '15.00',
+                  price: '£15.00',
                   imageUrl:
                       'https://cdn11.bigcommerce.com/s-jank4pe/images/stencil/1280w/products/676/7573/J180M_White_FT__51579.1460542956.jpg?c=2',
                 ),
                 ProductCard(
                   title: 'Grey Shirt',
-                  price: '20.00',
+                  price: '£20.00',
                   imageUrl:
                       'https://www.urbanindustry.co.uk/cdn/shop/products/UrbanIndustry_Organic_TShirt_Grey_01.jpg?v=1755864422',
                 ),
                 ProductCard(
                   title: 'Blue Shirt',
-                  price: '18.00',
+                  price: '£18.00',
                   imageUrl:
                       'https://www.militarykit.com/cdn/shop/products/royal-blue-cotton-tshirt-rear.jpg?v=1568719107&width=1200',
                 ),

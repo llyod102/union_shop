@@ -201,28 +201,27 @@ class _MerchandiseState extends State<Merchandise> {
               mainAxisSpacing: 48,
               children: const [
                 ProductCard(
-                  title: 'Black Hoodie',
+                  title: 'Headphones',
                   price: '£40.00',
                   imageUrl:
-                      'https://otheruk.com/cdn/shop/files/Hoodie-Black-Front_1000x1000_crop_center.jpg?v=1749416013',
+                      'https://copilot.microsoft.com/th/id/BCO.ae4ea94d-5daa-48e4-8afe-c29e7c72522f.png',
                 ),
                 ProductCard(
-                  title: 'White Hoodie',
-                  price: '£40.00',
+                  title: 'Post Card',
+                  price: '£30.00',
                   imageUrl:
-                      'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
+                      'https://copilot.microsoft.com/th/id/BCO.bf85a3bc-7485-49e2-80b2-039f6986ec0a.png',
                 ),
                 ProductCard(
-                  title: 'Grey hoodie',
-                  price: '£45.00',
-                  imageUrl:
-                      'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
+                  title: 'Plushy',
+                  price: '£25.00',
+                  imageUrl: 'https://i.redd.it/rdj542mmzywb1.jpg',
                 ),
                 ProductCard(
-                  title: 'Blue Hoodie',
+                  title: 'Toy',
                   price: '£35.00',
                   imageUrl:
-                      'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
+                      'https://manchestermuseumshop.com/cdn/shop/files/Keel-Toys-Stan-Small_02d40031-c0ff-452e-bd35-d4b931091da6_1445x.jpg?v=1694443600',
                 ),
               ],
             ),

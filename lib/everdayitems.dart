@@ -201,28 +201,28 @@ class _EverdayitemsState extends State<Everdayitems> {
               mainAxisSpacing: 48,
               children: const [
                 ProductCard(
-                  title: 'Black Hoodie',
+                  title: 'Watch',
                   price: '£40.00',
                   imageUrl:
-                      'https://otheruk.com/cdn/shop/files/Hoodie-Black-Front_1000x1000_crop_center.jpg?v=1749416013',
+                      'https://copilot.microsoft.com/th/id/BCO.b97e28bf-037b-4f10-9536-569642734943.png',
                 ),
                 ProductCard(
-                  title: 'White Hoodie',
-                  price: '£40.00',
+                  title: 'Jacket',
+                  price: '£30.00',
                   imageUrl:
-                      'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
+                      'https://api.deepai.org/job-view-file/3c468aa1-79c9-4eb5-a849-fcfec7f546c9/outputs/output.jpg',
                 ),
                 ProductCard(
-                  title: 'Grey hoodie',
-                  price: '£45.00',
+                  title: 'Hat',
+                  price: '£20.00',
                   imageUrl:
-                      'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
+                      'https://www.neweracap.com/cdn/shop/files/60746752_9FORTYAF_LifestyleEnergy_NONLIC_SLT_3QL.jpg?v=1744659809&width=535',
                 ),
                 ProductCard(
-                  title: 'Blue Hoodie',
+                  title: 'Glasses',
                   price: '£35.00',
                   imageUrl:
-                      'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
+                      'https://res.cloudinary.com/dd3imqqn7/image/upload/c_limit,w_1200/f_auto/q_auto/v1733391302/products/rhodes/rhodes-6/file_alo30n?_a=BAVAZGID0',
                 ),
               ],
             ),
