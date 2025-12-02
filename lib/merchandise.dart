@@ -193,6 +193,7 @@ class _MerchandiseState extends State<Merchandise> {
                 ],
               ),
             ),
+
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(20),
@@ -209,6 +210,34 @@ class _MerchandiseState extends State<Merchandise> {
                   ),
                 ],
               ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: const Row(children: [
+                HomeButtonSections(
+                  section: 'Filter',
+                  disabled: true,
+                ),
+                HomeButtonSections(
+                  section: 'All Products',
+                  dropdownItems: ["Colour", "Price", "Popularity"],
+                  disabled: true,
+                ),
+                HomeButtonSections(
+                  section: 'Sort By',
+                  disabled: true,
+                ),
+                HomeButtonSections(
+                  section: 'Featured',
+                  dropdownItems: [
+                    "Best Selling",
+                    "Alphabetically",
+                    "Price High to low",
+                    "Price low to High"
+                  ],
+                  disabled: true,
+                )
+              ]),
             ),
             GridView.count(
               shrinkWrap: true,
