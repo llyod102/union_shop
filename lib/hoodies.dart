@@ -193,6 +193,23 @@ class _HoodiesState extends State<Hoodies> {
                 ],
               ),
             ),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(20),
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Hoodie Collection',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             const SizedBox(height: 48),
             GridView.count(
               shrinkWrap: true,

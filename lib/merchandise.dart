@@ -193,6 +193,23 @@ class _MerchandiseState extends State<Merchandise> {
                 ],
               ),
             ),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(20),
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Merchandise Collections',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             GridView.count(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
