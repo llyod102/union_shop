@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:union_shop/product_page.dart';
 import 'package:union_shop/about_page.dart';
 import 'package:union_shop/personilsation_page.dart';
+import 'package:union_shop/clothing_collections.dart';
 
 import 'dart:async';
 
@@ -21,7 +22,7 @@ class UnionShopApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF4d2963)),
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
       // By default, the app starts at the '/' route, which is the HomeScreen
       initialRoute: '/',
       // When navigating to '/product', build and return the ProductPage
@@ -30,6 +31,7 @@ class UnionShopApp extends StatelessWidget {
         '/product': (context) => const ProductPage(),
         '/about': (context) => const AboutPage(),
         '/personalisation': (context) => const PersonilsationPage(),
+        '/clothing_collections': (context) => const ClothingCollections(),
       },
     );
   }
@@ -114,12 +116,18 @@ class _HomeButtonSectionsState extends State<HomeButtonSections> {
           textStyle: const TextStyle(
               fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),
           onSelected: (String? value) {
-            if (value != null) {
+            if (value == null) return;
+            // Route based on selected dropdown item
+            final lower = value.toLowerCase();
+            if (lower == 'clothing') {
+              Navigator.pushNamed(context, '/clothing_collections');
+            } else {
               Navigator.pushNamed(context, '/product');
-              Future.delayed(Duration.zero, () {
-                _controller.clear();
-              });
             }
+            // Clear selection after navigation
+            Future.delayed(Duration.zero, () {
+              _controller.clear();
+            });
           },
           dropdownMenuEntries: widget.dropdownItems!
               .map(
@@ -376,8 +384,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool _isSearching = false;
-  TextEditingController _searchController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
   }
