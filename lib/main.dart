@@ -63,11 +63,13 @@ class HomeButtonSections extends StatefulWidget {
   final String section;
   final String? functionname;
   final List<String>? dropdownItems;
+  final bool disabled;
   const HomeButtonSections(
       {super.key,
       required this.section,
       this.functionname,
-      this.dropdownItems});
+      this.dropdownItems,
+      this.disabled = false});
 
   @override
   State<HomeButtonSections> createState() => _HomeButtonSectionsState();
@@ -89,14 +91,16 @@ class _HomeButtonSectionsState extends State<HomeButtonSections> {
         child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
-              onPressed: () {
-                if (widget.section.toLowerCase() == 'home') {
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, '/', (route) => false);
-                } else if (widget.section.toLowerCase() == 'about') {
-                  Navigator.pushNamed(context, '/about');
-                }
-              },
+              onPressed: widget.disabled
+                  ? null
+                  : () {
+                      if (widget.section.toLowerCase() == 'home') {
+                        Navigator.pushNamedAndRemoveUntil(
+                            context, '/', (route) => false);
+                      } else if (widget.section.toLowerCase() == 'about') {
+                        Navigator.pushNamed(context, '/about');
+                      }
+                    },
               style: ButtonStyle(
                   backgroundColor:
                       WidgetStateProperty.all<Color>(Colors.white)),
@@ -123,20 +127,22 @@ class _HomeButtonSectionsState extends State<HomeButtonSections> {
           hintText: widget.section,
           textStyle: const TextStyle(
               fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),
-          onSelected: (String? value) {
-            if (value == null) return;
-            // Route based on selected dropdown item
-            final lower = value.toLowerCase();
-            if (lower == 'clothing') {
-              Navigator.pushNamed(context, '/clothing_collections');
-            } else {
-              Navigator.pushNamed(context, '/product');
-            }
-            // Clear selection after navigation
-            Future.delayed(Duration.zero, () {
-              _controller.clear();
-            });
-          },
+          onSelected: widget.disabled
+              ? null
+              : (String? value) {
+                  if (value == null) return;
+                  // Route based on selected dropdown item
+                  final lower = value.toLowerCase();
+                  if (lower == 'clothing') {
+                    Navigator.pushNamed(context, '/clothing_collections');
+                  } else {
+                    Navigator.pushNamed(context, '/product');
+                  }
+                  // Clear selection after navigation
+                  Future.delayed(Duration.zero, () {
+                    _controller.clear();
+                  });
+                },
           dropdownMenuEntries: widget.dropdownItems!
               .map(
                 (item) => DropdownMenuEntry<String>(
