@@ -193,6 +193,39 @@ class _EverdayitemsState extends State<Everdayitems> {
                 ],
               ),
             ),
+            GridView.count(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: MediaQuery.of(context).size.width > 600 ? 2 : 1,
+              crossAxisSpacing: 24,
+              mainAxisSpacing: 48,
+              children: const [
+                ProductCard(
+                  title: 'Black Hoodie',
+                  price: '£40.00',
+                  imageUrl:
+                      'https://otheruk.com/cdn/shop/files/Hoodie-Black-Front_1000x1000_crop_center.jpg?v=1749416013',
+                ),
+                ProductCard(
+                  title: 'White Hoodie',
+                  price: '£40.00',
+                  imageUrl:
+                      'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
+                ),
+                ProductCard(
+                  title: 'Grey hoodie',
+                  price: '£45.00',
+                  imageUrl:
+                      'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
+                ),
+                ProductCard(
+                  title: 'Blue Hoodie',
+                  price: '£35.00',
+                  imageUrl:
+                      'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
+                ),
+              ],
+            ),
             Container(
               width: double.infinity,
               color: const Color.fromARGB(29, 250, 250, 250),
