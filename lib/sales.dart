@@ -231,6 +231,34 @@ class _SalesState extends State<Sales> {
                 ],
               ),
             ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: const Row(children: [
+                HomeButtonSections(
+                  section: 'Filter',
+                  disabled: true,
+                ),
+                HomeButtonSections(
+                  section: 'All Products',
+                  dropdownItems: ["Clothing", "Merchandise", "Popularity"],
+                  disabled: true,
+                ),
+                HomeButtonSections(
+                  section: 'Sort By',
+                  disabled: true,
+                ),
+                HomeButtonSections(
+                  section: 'Featured',
+                  dropdownItems: [
+                    "Best Selling",
+                    "Alphabetically",
+                    "Price High to low",
+                    "Price low to High"
+                  ],
+                  disabled: true,
+                )
+              ]),
+            ),
 
             Container(
               width: double.infinity,
