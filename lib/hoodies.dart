@@ -254,7 +254,7 @@ class _HoodiesState extends State<Hoodies> {
                       'https://otheruk.com/cdn/shop/files/Hoodie-Black-Front_1000x1000_crop_center.jpg?v=1749416013',
                   thumbnailImages: [
                     'https://otheruk.com/cdn/shop/files/Hoodie-Black-Front_1000x1000_crop_center.jpg?v=1749416013',
-                    'https://api.deepai.org/job-view-file/c6787eb1-f266-4215-8f8c-b9eea009f4a7/outputs/output.jpg',
+                    'https://m.media-amazon.com/images/I/51LMTCq4dWL._AC_SX569_.jpg',
                     'https://api.deepai.org/job-view-file/be1637a0-203a-44b4-96c1-678fb64287d4/outputs/output.jpg',
                     'https://api.deepai.org/job-view-file/63d3113a-1964-4408-b57a-9cfb29a3918e/outputs/output.jpg',
                   ],

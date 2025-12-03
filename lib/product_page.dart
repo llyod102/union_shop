@@ -26,7 +26,7 @@ class _ProductPageState extends State<ProductPage> {
   final TextEditingController _emailController = TextEditingController();
   int _selectedImageIndex = 0;
   String? _selectedDesign = 'Plain';
-  String? _selectedSize;
+  String? _selectedSize = 'XS';
 
   late List<String> _thumbnailImages;
 
@@ -418,6 +418,57 @@ class _ProductPageState extends State<ProductPage> {
                   const SizedBox(height: 24),
 
                   // Size dropdown
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Size',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey[300]!),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            value: _selectedSize,
+                            isExpanded: true,
+                            items: const [
+                              DropdownMenuItem(
+                                value: 'XS',
+                                child: Text('XS'),
+                              ),
+                              DropdownMenuItem(
+                                value: 'S',
+                                child: Text('S'),
+                              ),
+                              DropdownMenuItem(
+                                value: 'M',
+                                child: Text('M'),
+                              ),
+                              DropdownMenuItem(
+                                value: 'L',
+                                child: Text('L'),
+                              ),
+                            ],
+                            onChanged: (value) {
+                              setState(() {
+                                _selectedSize = value;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
 
                   const SizedBox(height: 24),
 
