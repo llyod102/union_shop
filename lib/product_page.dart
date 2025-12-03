@@ -25,6 +25,8 @@ class _ProductPageState extends State<ProductPage> {
   final TextEditingController _searchController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   int _selectedImageIndex = 0;
+  String? _selectedDesign = 'Plain';
+  String? _selectedSize;
 
   late List<String> _thumbnailImages;
 
@@ -245,7 +247,7 @@ class _ProductPageState extends State<ProductPage> {
                       borderRadius: BorderRadius.circular(8),
                       child: Image.network(
                         _thumbnailImages[_selectedImageIndex],
-                        fit: BoxFit.contain,
+                        fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return Container(
                             color: Colors.grey[300],
@@ -306,7 +308,7 @@ class _ProductPageState extends State<ProductPage> {
                                 borderRadius: BorderRadius.circular(7),
                                 child: Image.network(
                                   _thumbnailImages[index],
-                                  fit: BoxFit.contain,
+                                  fit: BoxFit.cover,
                                   errorBuilder: (context, error, stackTrace) {
                                     return Container(
                                       color: Colors.grey[300],
@@ -349,6 +351,73 @@ class _ProductPageState extends State<ProductPage> {
                       color: Color(0xFF4d2963),
                     ),
                   ),
+
+                  const SizedBox(height: 24),
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Design',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey[300]!),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            value: _selectedDesign,
+                            isExpanded: true,
+                            items: const [
+                              DropdownMenuItem(
+                                value: 'Plain',
+                                child: Text('Plain'),
+                              ),
+                              DropdownMenuItem(
+                                value: 'Bird',
+                                child: Text('Bird'),
+                              ),
+                              DropdownMenuItem(
+                                value: 'Dog',
+                                child: Text('Dog'),
+                              ),
+                              DropdownMenuItem(
+                                value: 'Cat',
+                                child: Text('Cat'),
+                              ),
+                            ],
+                            onChanged: (value) {
+                              setState(() {
+                                _selectedDesign = value;
+                                if (value == 'Plain') {
+                                  _selectedImageIndex = 0;
+                                } else if (value == 'Bird') {
+                                  _selectedImageIndex = 1;
+                                } else if (value == 'Dog') {
+                                  _selectedImageIndex = 2;
+                                } else if (value == 'Cat') {
+                                  _selectedImageIndex = 3;
+                                }
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  // Size dropdown
 
                   const SizedBox(height: 24),
 
