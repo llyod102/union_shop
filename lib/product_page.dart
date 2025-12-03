@@ -6,8 +6,15 @@ class ProductPage extends StatefulWidget {
   final String? title;
   final String? price;
   final String? imageUrl;
+  final List<String>? thumbnailImages;
 
-  const ProductPage({super.key, this.title, this.price, this.imageUrl});
+  const ProductPage({
+    super.key,
+    this.title,
+    this.price,
+    this.imageUrl,
+    this.thumbnailImages,
+  });
 
   @override
   State<ProductPage> createState() => _ProductPageState();
@@ -20,23 +27,23 @@ class _ProductPageState extends State<ProductPage> {
   final TextEditingController _emailController = TextEditingController();
   int _selectedImageIndex = 0;
 
-  // Thumbnail images - you can replace these with your actual product image URLs
   late List<String> _thumbnailImages;
 
   @override
   void initState() {
     super.initState();
-    // Initialize thumbnail images with the main image and 3 variations
-    _thumbnailImages = [
-      widget.imageUrl ??
-          'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
-      widget.imageUrl ??
-          'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
-      widget.imageUrl ??
-          'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
-      widget.imageUrl ??
-          'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
-    ];
+    // Use provided thumbnails or fall back to default images
+    _thumbnailImages = widget.thumbnailImages ??
+        [
+          widget.imageUrl ??
+              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+          widget.imageUrl ??
+              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+          widget.imageUrl ??
+              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+          widget.imageUrl ??
+              'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+        ];
   }
 
   @override

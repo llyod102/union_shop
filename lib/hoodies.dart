@@ -252,24 +252,48 @@ class _HoodiesState extends State<Hoodies> {
                   price: '£40.00',
                   imageUrl:
                       'https://otheruk.com/cdn/shop/files/Hoodie-Black-Front_1000x1000_crop_center.jpg?v=1749416013',
+                  thumbnailImages: [
+                    'https://otheruk.com/cdn/shop/files/Hoodie-Black-Front_1000x1000_crop_center.jpg?v=1749416013',
+                    'https://otheruk.com/cdn/shop/files/Hoodie-Black-Back_1000x1000_crop_center.jpg?v=1749416016',
+                    'https://otheruk.com/cdn/shop/files/Hoodie-Black-Side_1000x1000_crop_center.jpg?v=1749416019',
+                    'https://otheruk.com/cdn/shop/files/Hoodie-Black-Detail_1000x1000_crop_center.jpg?v=1749416022',
+                  ],
                 ),
                 ProductCard(
                   title: 'White Hoodie',
                   price: '£40.00',
                   imageUrl:
                       'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
+                  thumbnailImages: [
+                    'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
+                    'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
+                    'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
+                    'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
+                  ],
                 ),
                 ProductCard(
                   title: 'Grey hoodie',
                   price: '£45.00',
                   imageUrl:
                       'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
+                  thumbnailImages: [
+                    'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
+                    'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
+                    'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
+                    'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
+                  ],
                 ),
                 ProductCard(
                   title: 'Blue Hoodie',
                   price: '£35.00',
                   imageUrl:
                       'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
+                  thumbnailImages: [
+                    'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
+                    'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
+                    'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
+                    'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
+                  ],
                 ),
               ],
             ),

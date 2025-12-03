@@ -806,6 +806,7 @@ class ProductCard extends StatelessWidget {
   final String price;
   final String imageUrl;
   final String? route;
+  final List<String>? thumbnailImages;
 
   const ProductCard({
     super.key,
@@ -813,6 +814,7 @@ class ProductCard extends StatelessWidget {
     required this.price,
     required this.imageUrl,
     this.route,
+    this.thumbnailImages,
   });
 
   @override
@@ -829,6 +831,7 @@ class ProductCard extends StatelessWidget {
                 title: title,
                 price: price,
                 imageUrl: imageUrl,
+                thumbnailImages: thumbnailImages,
               ),
             ),
           );
