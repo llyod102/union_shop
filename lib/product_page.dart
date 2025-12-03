@@ -388,11 +388,9 @@ class _ProductPageState extends State<ProductPage> {
                             value: _selectedDesign,
                             isExpanded: true,
                             items: _designOptions
-                                .asMap()
-                                .entries
-                                .map((entry) => DropdownMenuItem(
-                                      value: entry.value,
-                                      child: Text(entry.value),
+                                .map((design) => DropdownMenuItem<String>(
+                                      value: design,
+                                      child: Text(design),
                                     ))
                                 .toList(),
                             onChanged: (value) {

@@ -246,8 +246,8 @@ class _HoodiesState extends State<Hoodies> {
               crossAxisCount: MediaQuery.of(context).size.width > 600 ? 2 : 1,
               crossAxisSpacing: 24,
               mainAxisSpacing: 48,
-              children: const [
-                ProductCard(
+              children: [
+                const ProductCard(
                   title: 'Dark Hoodies',
                   price: '£40.00',
                   imageUrl:
