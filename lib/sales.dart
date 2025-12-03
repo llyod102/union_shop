@@ -193,6 +193,45 @@ class _SalesState extends State<Sales> {
                 ],
               ),
             ),
+
+            // Sale section
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(40),
+              color: Colors.white,
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'SALE',
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  Text(
+                    'Don\'t miss out! Get yours before they\'re all gone!',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 24),
+                  Text(
+                    'All prices shown are inclusive of the discount 🛒',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            ),
+
             Container(
               width: double.infinity,
               color: const Color.fromARGB(29, 250, 250, 250),
