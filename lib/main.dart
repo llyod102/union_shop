@@ -226,8 +226,9 @@ class _HeroSliderState extends State<HeroSlider> {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width <= 600;
     return SizedBox(
-      height: 400,
+      height: isMobile ? 250 : 400,
       width: double.infinity,
       child: Stack(
         children: [
@@ -834,7 +835,7 @@ class ProductCard extends StatelessWidget {
         children: [
           SizedBox(
             width: double.infinity,
-            height: MediaQuery.of(context).size.width > 600 ? 400 : 200,
+            height: MediaQuery.of(context).size.width > 400 ? 300 : 200,
             child: Image.network(
               imageUrl,
               fit: BoxFit.cover,
