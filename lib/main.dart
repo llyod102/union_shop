@@ -8,6 +8,7 @@ import 'package:union_shop/tops.dart';
 import 'package:union_shop/hoodies.dart';
 import 'package:union_shop/everdayitems.dart';
 import 'package:union_shop/merchandise.dart';
+import 'package:union_shop/sales.dart';
 
 import 'dart:async';
 
@@ -39,6 +40,7 @@ class UnionShopApp extends StatelessWidget {
         '/everdayitems': (context) => const Everdayitems(),
         '/hoodies': (context) => const Hoodies(),
         '/tops': (context) => const Tops(),
+        '/sales': (context) => const Sales(),
         '/merchandise': (context) => const Merchandise(),
       },
     );
@@ -99,6 +101,8 @@ class _HomeButtonSectionsState extends State<HomeButtonSections> {
                             context, '/', (route) => false);
                       } else if (widget.section.toLowerCase() == 'about') {
                         Navigator.pushNamed(context, '/about');
+                      } else if (widget.section.toLowerCase() == 'sale!') {
+                        Navigator.pushNamed(context, '/sales');
                       }
                     },
               style: ButtonStyle(
@@ -371,8 +375,8 @@ class _HeroSliderState extends State<HeroSlider> {
                   } else if (slide.buttonText.toLowerCase() ==
                       "browse collection") {
                     Navigator.pushNamed(context, '/clothing_collections');
-                    return;
                   }
+                  return;
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF4d2963),
