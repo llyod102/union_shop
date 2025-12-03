@@ -845,7 +845,7 @@ class ProductCard extends StatelessWidget {
             height: MediaQuery.of(context).size.width > 400 ? 300 : 200,
             child: Image.network(
               imageUrl,
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
               errorBuilder: (context, error, stackTrace) {
                 return Container(
                   color: Colors.grey[300],

@@ -23,7 +23,6 @@ class ProductPage extends StatefulWidget {
 class _ProductPageState extends State<ProductPage> {
   bool _isSearching = false;
   final TextEditingController _searchController = TextEditingController();
-  late TapGestureRecognizer _personalisationTap;
   final TextEditingController _emailController = TextEditingController();
   int _selectedImageIndex = 0;
 
@@ -51,7 +50,6 @@ class _ProductPageState extends State<ProductPage> {
     _emailController.dispose();
     super.dispose();
     _searchController.dispose();
-    _personalisationTap.dispose();
   }
 
   void navigateToHome(BuildContext context) {
@@ -247,7 +245,7 @@ class _ProductPageState extends State<ProductPage> {
                       borderRadius: BorderRadius.circular(8),
                       child: Image.network(
                         _thumbnailImages[_selectedImageIndex],
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                         errorBuilder: (context, error, stackTrace) {
                           return Container(
                             color: Colors.grey[300],
@@ -308,7 +306,7 @@ class _ProductPageState extends State<ProductPage> {
                                 borderRadius: BorderRadius.circular(7),
                                 child: Image.network(
                                   _thumbnailImages[index],
-                                  fit: BoxFit.cover,
+                                  fit: BoxFit.contain,
                                   errorBuilder: (context, error, stackTrace) {
                                     return Container(
                                       color: Colors.grey[300],
