@@ -833,8 +833,8 @@ class ProductCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 400,
             width: double.infinity,
+            height: MediaQuery.of(context).size.width > 600 ? 400 : 200,
             child: Image.network(
               imageUrl,
               fit: BoxFit.cover,
