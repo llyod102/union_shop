@@ -368,6 +368,10 @@ class _HeroSliderState extends State<HeroSlider> {
                     await launchUrlString(url,
                         mode: LaunchMode.platformDefault);
                     return;
+                  } else if (slide.buttonText.toLowerCase() ==
+                      "browse collection") {
+                    Navigator.pushNamed(context, '/clothing_collections');
+                    return;
                   }
                 },
                 style: ElevatedButton.styleFrom(
