@@ -248,15 +248,15 @@ class _HoodiesState extends State<Hoodies> {
               mainAxisSpacing: 48,
               children: const [
                 ProductCard(
-                  title: 'Black Hoodie',
+                  title: 'Dark Hoodies',
                   price: '£40.00',
                   imageUrl:
                       'https://otheruk.com/cdn/shop/files/Hoodie-Black-Front_1000x1000_crop_center.jpg?v=1749416013',
                   thumbnailImages: [
                     'https://otheruk.com/cdn/shop/files/Hoodie-Black-Front_1000x1000_crop_center.jpg?v=1749416013',
                     'https://m.media-amazon.com/images/I/51LMTCq4dWL._AC_SX569_.jpg',
-                    'https://api.deepai.org/job-view-file/be1637a0-203a-44b4-96c1-678fb64287d4/outputs/output.jpg',
-                    'https://api.deepai.org/job-view-file/63d3113a-1964-4408-b57a-9cfb29a3918e/outputs/output.jpg',
+                    'https://theblackdog.com/cdn/shop/files/A197_Navy_5652.jpg?v=1760902238&width=416',
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQfJT5-5bM8yfid47MSwLjXLX7fZSyL1Gnxg&s',
                   ],
                   designOptions: [
                     'Plain',
