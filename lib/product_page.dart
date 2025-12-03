@@ -250,6 +250,18 @@ class _ProductPageState extends State<ProductPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Back button
+                  IconButton(
+                    icon: const Icon(Icons.arrow_back),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    padding: EdgeInsets.zero,
+                    alignment: Alignment.centerLeft,
+                  ),
+
+                  const SizedBox(height: 16),
+
                   // Product image
                   Container(
                     height: 300,
