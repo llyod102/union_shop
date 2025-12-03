@@ -18,6 +18,26 @@ class _ProductPageState extends State<ProductPage> {
   final TextEditingController _searchController = TextEditingController();
   late TapGestureRecognizer _personalisationTap;
   final TextEditingController _emailController = TextEditingController();
+  int _selectedImageIndex = 0;
+
+  // Thumbnail images - you can replace these with your actual product image URLs
+  late List<String> _thumbnailImages;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize thumbnail images with the main image and 3 variations
+    _thumbnailImages = [
+      widget.imageUrl ??
+          'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+      widget.imageUrl ??
+          'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+      widget.imageUrl ??
+          'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+      widget.imageUrl ??
+          'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+    ];
+  }
 
   @override
   void dispose() {
@@ -219,8 +239,7 @@ class _ProductPageState extends State<ProductPage> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.network(
-                        widget.imageUrl ??
-                            'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
+                        _thumbnailImages[_selectedImageIndex],
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return Container(
@@ -244,6 +263,60 @@ class _ProductPageState extends State<ProductPage> {
                             ),
                           );
                         },
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  // Thumbnail gallery
+                  SizedBox(
+                    height: 80,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: List.generate(
+                        _thumbnailImages.length,
+                        (index) => Padding(
+                          padding: const EdgeInsets.only(right: 12),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _selectedImageIndex = index;
+                              });
+                            },
+                            child: Container(
+                              width: 80,
+                              height: 80,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(
+                                  color: _selectedImageIndex == index
+                                      ? const Color(0xFF4d2963)
+                                      : Colors.grey[300]!,
+                                  width: _selectedImageIndex == index ? 2 : 1,
+                                ),
+                                color: Colors.grey[200],
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(7),
+                                child: Image.network(
+                                  _thumbnailImages[index],
+                                  fit: BoxFit.cover,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Container(
+                                      color: Colors.grey[300],
+                                      child: const Icon(
+                                        Icons.image_not_supported,
+                                        color: Colors.grey,
+                                        size: 24,
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
