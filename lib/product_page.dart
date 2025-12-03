@@ -26,6 +26,8 @@ class _ProductPageState extends State<ProductPage> {
   bool _isSearching = false;
   final TextEditingController _searchController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _quantityController =
+      TextEditingController(text: '1');
   int _selectedImageIndex = 0;
   String? _selectedDesign;
   String? _selectedSize = 'XS';
@@ -60,8 +62,9 @@ class _ProductPageState extends State<ProductPage> {
   @override
   void dispose() {
     _emailController.dispose();
-    super.dispose();
     _searchController.dispose();
+    _quantityController.dispose();
+    super.dispose();
   }
 
   void navigateToHome(BuildContext context) {
@@ -460,6 +463,52 @@ class _ProductPageState extends State<ProductPage> {
                               });
                             },
                           ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  // Quantity input
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'Quantity',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      SizedBox(
+                        width: 120,
+                        child: TextField(
+                          controller: _quantityController,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide(color: Colors.grey[300]!),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 12,
+                            ),
+                          ),
+                          onChanged: (value) {
+                            int? qty = int.tryParse(value);
+                            if (qty == null || qty < 1) {
+                              _quantityController.text = '1';
+                              _quantityController.selection =
+                                  TextSelection.fromPosition(
+                                TextPosition(
+                                    offset: _quantityController.text.length),
+                              );
+                            }
+                          },
                         ),
                       ),
                     ],
