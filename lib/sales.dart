@@ -259,6 +259,72 @@ class _SalesState extends State<Sales> {
                 )
               ]),
             ),
+            const SizedBox(height: 48),
+            GridView.count(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: MediaQuery.of(context).size.width > 600 ? 2 : 1,
+              crossAxisSpacing: 24,
+              mainAxisSpacing: 48,
+              children: const [
+                ProductCard(
+                  title: 'Dark Hoodies',
+                  price: '£40.00',
+                  imageUrl:
+                      'https://otheruk.com/cdn/shop/files/Hoodie-Black-Front_1000x1000_crop_center.jpg?v=1749416013',
+                  thumbnailImages: [
+                    'https://otheruk.com/cdn/shop/files/Hoodie-Black-Front_1000x1000_crop_center.jpg?v=1749416013',
+                    'https://m.media-amazon.com/images/I/51LMTCq4dWL._AC_SX569_.jpg',
+                    'https://theblackdog.com/cdn/shop/files/A197_Navy_5652.jpg?v=1760902238&width=416',
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQfJT5-5bM8yfid47MSwLjXLX7fZSyL1Gnxg&s',
+                  ],
+                  designOptions: [
+                    'Plain',
+                    'Bird',
+                    'Dog',
+                    'Cat',
+                  ],
+                  description:
+                      'Comfortable dark hoodie perfect for any occasion. Made from high-quality materials for ultimate comfort and durability.',
+                ),
+                ProductCard(
+                  title: 'White Hoodie',
+                  price: '£40.00',
+                  imageUrl:
+                      'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
+                  thumbnailImages: [
+                    'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
+                    'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
+                    'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
+                    'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
+                  ],
+                ),
+                ProductCard(
+                  title: 'Grey hoodie',
+                  price: '£45.00',
+                  imageUrl:
+                      'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
+                  thumbnailImages: [
+                    'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
+                    'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
+                    'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
+                    'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
+                  ],
+                ),
+                ProductCard(
+                  title: 'Blue Hoodie',
+                  price: '£35.00',
+                  imageUrl:
+                      'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
+                  thumbnailImages: [
+                    'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
+                    'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
+                    'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
+                    'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
+                  ],
+                ),
+              ],
+            ),
 
             Container(
               width: double.infinity,
