@@ -51,10 +51,10 @@ class _ProductPageState extends State<ProductPage> {
 
     // Use provided design options or fall back to defaults
     _designOptions =
-        widget.designOptions ?? ['Plain', 'Plain', 'Plain', 'Plain'];
+        widget.designOptions ?? ['Design', 'Design2', 'Design3', 'Design4'];
 
     // Set the first design option as default
-    _selectedDesign = _designOptions.isNotEmpty ? _designOptions[0] : 'Plain';
+    _selectedDesign = _designOptions.isNotEmpty ? _designOptions[0] : 'Design';
   }
 
   @override
