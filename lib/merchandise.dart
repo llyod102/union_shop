@@ -358,30 +358,59 @@ class _MerchandiseState extends State<Merchandise> {
                     ],
                   ),
                 ),
-                const Expanded(
+                Expanded(
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         'Help & Information',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 16,
                             fontWeight: FontWeight.w600),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      SizedBox(
-                        height: 75,
-                        child: HomeButtonSections(section: 'Search'),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          onPressed: null,
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  WidgetStateProperty.all<Color>(Colors.white)),
+                          child: const FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              'Search',
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                            ),
+                          ),
+                        ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      SizedBox(
-                        height: 75,
-                        child: HomeButtonSections(
-                            section: 'Terms & Conditions of Sale Policy'),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          onPressed: null,
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  WidgetStateProperty.all<Color>(Colors.white)),
+                          child: const FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              'Terms & Conditions of Sale Policy',
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                            ),
+                          ),
+                        ),
                       ),
                     ],
                   ),
