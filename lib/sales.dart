@@ -268,28 +268,28 @@ class _SalesState extends State<Sales> {
               mainAxisSpacing: 48,
               children: const [
                 ProductCard(
-                  title: 'Dark Hoodies',
-                  price: '£40.00',
+                  title: 'Classic Sweat Shirts',
+                  price: '£3̶5̶:̶0̶0̶  £20.00',
                   imageUrl:
-                      'https://otheruk.com/cdn/shop/files/Hoodie-Black-Front_1000x1000_crop_center.jpg?v=1749416013',
+                      'https://s.alicdn.com/@sc04/kf/U4bb4ddac6e314a1a98bfde968cecd69fh/No-Brand-Name-Clothes-Men-Hoodies-Sweater-Hoodie-Sweat-shirt-Unique-Unbranded-Comfy-Cozy-Hoodies-Sweat-Shirt-for-Men.jpg_300x300.jpg',
                   thumbnailImages: [
-                    'https://otheruk.com/cdn/shop/files/Hoodie-Black-Front_1000x1000_crop_center.jpg?v=1749416013',
-                    'https://m.media-amazon.com/images/I/51LMTCq4dWL._AC_SX569_.jpg',
-                    'https://theblackdog.com/cdn/shop/files/A197_Navy_5652.jpg?v=1760902238&width=416',
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQfJT5-5bM8yfid47MSwLjXLX7fZSyL1Gnxg&s',
+                    'https://s.alicdn.com/@sc04/kf/U4bb4ddac6e314a1a98bfde968cecd69fh/No-Brand-Name-Clothes-Men-Hoodies-Sweater-Hoodie-Sweat-shirt-Unique-Unbranded-Comfy-Cozy-Hoodies-Sweat-Shirt-for-Men.jpg_300x300.jpg',
+                    'https://www.ariashop.co.uk/cdn/shop/files/white.jpg?v=1692631506&width=800',
+                    'https://ml.thcdn.com/images/v2/productimg/original/14314656-2445257485007254.jpg?width=924&height=1294',
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvexA5LiaB1LtMrPJi1tow24yFBheErqzrGA&s',
                   ],
                   designOptions: [
-                    'Plain',
-                    'Bird',
-                    'Dog',
-                    'Cat',
+                    'Grey',
+                    'White',
+                    'Black',
+                    'Yellow',
                   ],
                   description:
                       'Comfortable dark hoodie perfect for any occasion. Made from high-quality materials for ultimate comfort and durability.',
                 ),
                 ProductCard(
                   title: 'White Hoodie',
-                  price: '£40.00',
+                  price: '£3̶5̶:̶0̶0̶  £18.00',
                   imageUrl:
                       'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
                   thumbnailImages: [
@@ -301,7 +301,7 @@ class _SalesState extends State<Sales> {
                 ),
                 ProductCard(
                   title: 'Grey hoodie',
-                  price: '£45.00',
+                  price: '£3̶5̶:̶0̶0̶  £10.00',
                   imageUrl:
                       'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
                   thumbnailImages: [
@@ -313,7 +313,7 @@ class _SalesState extends State<Sales> {
                 ),
                 ProductCard(
                   title: 'Blue Hoodie',
-                  price: '£35.00',
+                  price: '£3̶5̶:̶0̶0̶  £25.00',
                   imageUrl:
                       'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
                   thumbnailImages: [
