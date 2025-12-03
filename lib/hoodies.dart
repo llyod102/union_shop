@@ -264,6 +264,8 @@ class _HoodiesState extends State<Hoodies> {
                     'Dog',
                     'Cat',
                   ],
+                  description:
+                      'Comfortable dark hoodie perfect for any occasion. Made from high-quality materials for ultimate comfort and durability.',
                 ),
                 ProductCard(
                   title: 'White Hoodie',

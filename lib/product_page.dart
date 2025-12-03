@@ -8,6 +8,7 @@ class ProductPage extends StatefulWidget {
   final String? imageUrl;
   final List<String>? thumbnailImages;
   final List<String>? designOptions;
+  final String? description;
 
   const ProductPage({
     super.key,
@@ -16,6 +17,7 @@ class ProductPage extends StatefulWidget {
     this.imageUrl,
     this.thumbnailImages,
     this.designOptions,
+    this.description,
   });
 
   @override
@@ -551,9 +553,10 @@ class _ProductPageState extends State<ProductPage> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  const Text(
-                    'This is a placeholder description for the product. Students should replace this with real product information and implement proper data management.',
-                    style: TextStyle(
+                  Text(
+                    widget.description ??
+                        'This is a placeholder description for the product. Students should replace this with real product information and implement proper data management.',
+                    style: const TextStyle(
                       fontSize: 16,
                       color: Colors.grey,
                       height: 1.5,
