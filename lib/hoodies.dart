@@ -258,6 +258,12 @@ class _HoodiesState extends State<Hoodies> {
                     'https://api.deepai.org/job-view-file/be1637a0-203a-44b4-96c1-678fb64287d4/outputs/output.jpg',
                     'https://api.deepai.org/job-view-file/63d3113a-1964-4408-b57a-9cfb29a3918e/outputs/output.jpg',
                   ],
+                  designOptions: [
+                    'Plain',
+                    'Bird',
+                    'Dog',
+                    'Cat',
+                  ],
                 ),
                 ProductCard(
                   title: 'White Hoodie',

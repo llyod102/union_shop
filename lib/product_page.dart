@@ -7,6 +7,7 @@ class ProductPage extends StatefulWidget {
   final String? price;
   final String? imageUrl;
   final List<String>? thumbnailImages;
+  final List<String>? designOptions;
 
   const ProductPage({
     super.key,
@@ -14,6 +15,7 @@ class ProductPage extends StatefulWidget {
     this.price,
     this.imageUrl,
     this.thumbnailImages,
+    this.designOptions,
   });
 
   @override
@@ -25,10 +27,11 @@ class _ProductPageState extends State<ProductPage> {
   final TextEditingController _searchController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   int _selectedImageIndex = 0;
-  String? _selectedDesign = 'Plain';
+  String? _selectedDesign;
   String? _selectedSize = 'XS';
 
   late List<String> _thumbnailImages;
+  late List<String> _designOptions;
 
   @override
   void initState() {
@@ -45,6 +48,13 @@ class _ProductPageState extends State<ProductPage> {
           widget.imageUrl ??
               'https://shop.upsu.net/cdn/shop/files/PortsmouthCityMagnet1_1024x1024@2x.jpg?v=1752230282',
         ];
+
+    // Use provided design options or fall back to defaults
+    _designOptions =
+        widget.designOptions ?? ['Plain', 'Plain', 'Plain', 'Plain'];
+
+    // Set the first design option as default
+    _selectedDesign = _designOptions.isNotEmpty ? _designOptions[0] : 'Plain';
   }
 
   @override
@@ -377,35 +387,22 @@ class _ProductPageState extends State<ProductPage> {
                           child: DropdownButton<String>(
                             value: _selectedDesign,
                             isExpanded: true,
-                            items: const [
-                              DropdownMenuItem(
-                                value: 'Plain',
-                                child: Text('Plain'),
-                              ),
-                              DropdownMenuItem(
-                                value: 'Bird',
-                                child: Text('Bird'),
-                              ),
-                              DropdownMenuItem(
-                                value: 'Dog',
-                                child: Text('Dog'),
-                              ),
-                              DropdownMenuItem(
-                                value: 'Cat',
-                                child: Text('Cat'),
-                              ),
-                            ],
+                            items: _designOptions
+                                .asMap()
+                                .entries
+                                .map((entry) => DropdownMenuItem(
+                                      value: entry.value,
+                                      child: Text(entry.value),
+                                    ))
+                                .toList(),
                             onChanged: (value) {
                               setState(() {
                                 _selectedDesign = value;
-                                if (value == 'Plain') {
-                                  _selectedImageIndex = 0;
-                                } else if (value == 'Bird') {
-                                  _selectedImageIndex = 1;
-                                } else if (value == 'Dog') {
-                                  _selectedImageIndex = 2;
-                                } else if (value == 'Cat') {
-                                  _selectedImageIndex = 3;
+                                // Change image based on selected design index
+                                int index = _designOptions.indexOf(value!);
+                                if (index >= 0 &&
+                                    index < _thumbnailImages.length) {
+                                  _selectedImageIndex = index;
                                 }
                               });
                             },
