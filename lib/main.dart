@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:union_shop/Authentication.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:union_shop/product_page.dart';
 import 'package:union_shop/about_page.dart';
@@ -9,6 +10,7 @@ import 'package:union_shop/hoodies.dart';
 import 'package:union_shop/everdayitems.dart';
 import 'package:union_shop/merchandise.dart';
 import 'package:union_shop/sales.dart';
+import 'package:union_shop/authentication.dart';
 
 import 'dart:async';
 
@@ -42,6 +44,7 @@ class UnionShopApp extends StatelessWidget {
         '/tops': (context) => const Tops(),
         '/sales': (context) => const Sales(),
         '/merchandise': (context) => const Merchandise(),
+        '/authentication': (context) => const Authentication(),
       },
     );
   }
