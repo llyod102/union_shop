@@ -479,12 +479,14 @@ class _TopsState extends State<Tops> {
                     );
                   },
                   child: Card(
+                    elevation: 2,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Expanded(
                           child: Image.network(
                             top.imageUrl,
+                            width: double.infinity,
                             fit: BoxFit.cover,
                             errorBuilder: (context, error, stackTrace) {
                               return Container(
@@ -498,7 +500,7 @@ class _TopsState extends State<Tops> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(12.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
