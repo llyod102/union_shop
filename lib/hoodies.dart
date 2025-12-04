@@ -320,21 +320,61 @@ class _HoodiesState extends State<Hoodies> {
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: const Row(children: [
-                HomeButtonSections(
+              child: Row(children: [
+                const HomeButtonSections(
                   section: 'Filter',
                   disabled: true,
                 ),
-                HomeButtonSections(
-                  section: 'All Products',
-                  dropdownItems: ["Dark Clothing", "Bright Clothing"],
-                  disabled: true,
+                PopupMenuButton<String>(
+                  onSelected: (String value) {
+                    setState(() {
+                      if (value == 'All Products') {
+                        _selectedFilter = null;
+                      } else if (value == 'Dark Clothing') {
+                        _selectedFilter = 'dark';
+                      } else if (value == 'Bright Clothing') {
+                        _selectedFilter = 'bright';
+                      }
+                    });
+                  },
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    child: Row(
+                      children: [
+                        Text(
+                          _selectedFilter == null
+                              ? 'All Products'
+                              : _selectedFilter == 'dark'
+                                  ? 'Dark Clothing'
+                                  : 'Bright Clothing',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                        const Icon(Icons.arrow_drop_down, size: 20),
+                      ],
+                    ),
+                  ),
+                  itemBuilder: (BuildContext context) =>
+                      <PopupMenuEntry<String>>[
+                    const PopupMenuItem<String>(
+                      value: 'All Products',
+                      child: Text('All Products'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'Dark Clothing',
+                      child: Text('Dark Clothing'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'Bright Clothing',
+                      child: Text('Bright Clothing'),
+                    ),
+                  ],
                 ),
-                HomeButtonSections(
+                const HomeButtonSections(
                   section: 'Sort By',
                   disabled: true,
                 ),
-                HomeButtonSections(
+                const HomeButtonSections(
                   section: 'Featured',
                   dropdownItems: [
                     "Best Selling",
