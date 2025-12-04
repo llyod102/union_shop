@@ -348,7 +348,10 @@ class _SalesState extends State<Sales> {
                                   minWidth: 32,
                                   minHeight: 32,
                                 ),
-                                onPressed: placeholderCallbackForButtons,
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, '/authentication');
+                                },
                               ),
                               IconButton(
                                 icon: const Icon(
@@ -361,7 +364,9 @@ class _SalesState extends State<Sales> {
                                   minWidth: 32,
                                   minHeight: 32,
                                 ),
-                                onPressed: placeholderCallbackForButtons,
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/cart');
+                                },
                               ),
                               IconButton(
                                 icon: const Icon(

@@ -644,13 +644,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: const [
                         ProductCard(
                           title: 'Grey Hoodie',
-                          price: '£1̶0̶.̶0̶0̶  £7.99',
+                          price: '£7.99',
                           imageUrl:
                               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT_xau7L0-dEIKkCD-lhxccRDhqP7qht3mYg&s',
                         ),
                         ProductCard(
                           title: 'T-Shirt',
-                          price: '£1̶0̶.̶0̶0̶  £5.99',
+                          price: '£5.99',
                           imageUrl:
                               'https://www.shutterstock.com/image-photo/white-crew-neck-tshirt-highly-600nw-2590672403.jpg',
                         ),

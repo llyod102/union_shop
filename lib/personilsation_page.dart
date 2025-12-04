@@ -156,7 +156,10 @@ class _PersonilsationPageState extends State<PersonilsationPage> {
                                   minWidth: 32,
                                   minHeight: 32,
                                 ),
-                                onPressed: placeholderCallbackForButtons,
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, '/authentication');
+                                },
                               ),
                               IconButton(
                                 icon: const Icon(
@@ -169,7 +172,9 @@ class _PersonilsationPageState extends State<PersonilsationPage> {
                                   minWidth: 32,
                                   minHeight: 32,
                                 ),
-                                onPressed: placeholderCallbackForButtons,
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/cart');
+                                },
                               ),
                               IconButton(
                                 icon: const Icon(

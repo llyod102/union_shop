@@ -216,7 +216,10 @@ class _MerchandiseState extends State<Merchandise> {
                                   minWidth: 32,
                                   minHeight: 32,
                                 ),
-                                onPressed: placeholderCallbackForButtons,
+                                onPressed: () {
+                                  Navigator.pushNamed(
+                                      context, '/authentication');
+                                },
                               ),
                               IconButton(
                                 icon: const Icon(
@@ -229,7 +232,9 @@ class _MerchandiseState extends State<Merchandise> {
                                   minWidth: 32,
                                   minHeight: 32,
                                 ),
-                                onPressed: placeholderCallbackForButtons,
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/cart');
+                                },
                               ),
                               IconButton(
                                 icon: const Icon(
