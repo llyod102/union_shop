@@ -139,9 +139,11 @@ Base price: £25.00
 - **Product Data**: Currently, only the Hoodies and Tops categories contain a full range of different products. The Everyday Items, Merchandise, and Sales sections display the same placeholder products across their respective categories.
 - **Mock Data**: Product inventory is hardcoded for demonstration purposes and not connected to a backend database.
 - **No Payment Processing**: The checkout process is simulated only - no real money transactions or payment gateway integration is implemented.
-- **Registration Not Functional**: User registration and authentication systems are not currently operational.
+- **Registration Not Functional**: User registration and authentication systems are not currently operational and not connected to any external authentication services (e.g., Firebase, Auth0).
 - **Footer Widgets**: Interactive elements in the footer section are placeholder buttons and do not perform any actions.
 - **Cart Item Grouping**: Duplicate items (same product, size, and design) are displayed as separate entries in the cart rather than being consolidated with updated quantities.
+- **No Cart Editing**: Once items are added to the cart, quantity, size, and design cannot be edited. Items can only be removed entirely.
+- **Search Not Functional**: The search bar is a UI placeholder and does not perform any product search functionality.
 - **Filter Functionality**: Category filtering only works on the Hoodies and Tops pages, as these were the only categories with multiple product types implemented at the time. Sort functionality (by price and alphabetically) works across all product pages.
 
 
