@@ -535,7 +535,8 @@ class _ProductPageState extends State<ProductPage> {
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
-                        int quantity = int.tryParse(_quantityController.text) ?? 1;
+                        int quantity =
+                            int.tryParse(_quantityController.text) ?? 1;
                         cartItems.add(CartItem(
                           title: widget.title ?? 'Product',
                           price: widget.price ?? '£0.00',

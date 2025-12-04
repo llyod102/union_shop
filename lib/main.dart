@@ -12,6 +12,7 @@ import 'package:union_shop/sales.dart';
 import 'package:union_shop/authentication.dart';
 import 'package:union_shop/cart_page.dart';
 import 'dart:async';
+
 // Cart item model
 class CartItem {
   final String title;
