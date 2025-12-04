@@ -909,9 +909,27 @@ class ProductCard extends StatelessWidget {
                 maxLines: 2,
               ),
               const SizedBox(height: 4),
-              Text(
-                price,
-                style: const TextStyle(fontSize: 13, color: Colors.grey),
+              Row(
+                children: [
+                  Text(
+                    price.contains('  ') ? price.split('  ')[0] : price,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: Colors.grey,
+                      decoration: TextDecoration.lineThrough,
+                    ),
+                  ),
+                  if (price.contains('  ')) ...[const SizedBox(width: 8)],
+                  if (price.contains('  '))
+                    Text(
+                      price.split('  ')[1],
+                      style: const TextStyle(
+                        fontSize: 13,
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                ],
               ),
             ],
           ),

@@ -11,6 +11,7 @@ class Sales extends StatefulWidget {
 class SaleProduct {
   final String title;
   final String price;
+  final String originalPrice;
   final String imageUrl;
   final List<String>? thumbnailImages;
   final List<String>? designOptions;
@@ -19,6 +20,7 @@ class SaleProduct {
   SaleProduct({
     required this.title,
     required this.price,
+    required this.originalPrice,
     required this.imageUrl,
     this.thumbnailImages,
     this.designOptions,
@@ -37,6 +39,7 @@ class _SalesState extends State<Sales> {
     SaleProduct(
       title: 'Classic Sweat Shirts',
       price: '£20.00',
+      originalPrice: '£35.00',
       imageUrl:
           'https://s.alicdn.com/@sc04/kf/U4bb4ddac6e314a1a98bfde968cecd69fh/No-Brand-Name-Clothes-Men-Hoodies-Sweater-Hoodie-Sweat-shirt-Unique-Unbranded-Comfy-Cozy-Hoodies-Sweat-Shirt-for-Men.jpg_300x300.jpg',
       thumbnailImages: [
@@ -52,6 +55,7 @@ class _SalesState extends State<Sales> {
     SaleProduct(
       title: 'White Hoodie',
       price: '£18.00',
+      originalPrice: '£35.00',
       imageUrl:
           'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
       thumbnailImages: [
@@ -61,6 +65,7 @@ class _SalesState extends State<Sales> {
     SaleProduct(
       title: 'Grey hoodie',
       price: '£10.00',
+      originalPrice: '£35.00',
       imageUrl:
           'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
       thumbnailImages: [
@@ -70,6 +75,7 @@ class _SalesState extends State<Sales> {
     SaleProduct(
       title: 'Blue Hoodie',
       price: '£25.00',
+      originalPrice: '£35.00',
       imageUrl:
           'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
       thumbnailImages: [
@@ -400,7 +406,7 @@ class _SalesState extends State<Sales> {
                 final product = sortedProducts[index];
                 return ProductCard(
                   title: product.title,
-                  price: product.price,
+                  price: '${product.originalPrice}  ${product.price}',
                   imageUrl: product.imageUrl,
                   thumbnailImages: product.thumbnailImages ?? [],
                   designOptions: product.designOptions ?? [],
