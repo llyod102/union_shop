@@ -12,6 +12,8 @@ class _MerchandiseState extends State<Merchandise> {
   bool _isSearching = false;
   final TextEditingController _searchController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+  String?
+      _selectedSort; // 'featured', 'best-selling', 'alphabetically', 'price-high-low', 'price-low-high'
 
   @override
   void dispose() {
@@ -213,7 +215,7 @@ class _MerchandiseState extends State<Merchandise> {
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: const Row(children: [
+              child: Row(children: [
                 HomeButtonSections(
                   section: 'Filter',
                   disabled: true,
@@ -227,16 +229,53 @@ class _MerchandiseState extends State<Merchandise> {
                   section: 'Sort By',
                   disabled: true,
                 ),
-                HomeButtonSections(
-                  section: 'Featured',
-                  dropdownItems: [
-                    "Best Selling",
-                    "Alphabetically",
-                    "Price High to low",
-                    "Price low to High"
+                PopupMenuButton<String>(
+                  onSelected: (String value) {
+                    setState(() {
+                      _selectedSort = value;
+                    });
+                  },
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    child: Row(
+                      children: [
+                        Text(
+                          _selectedSort == null
+                              ? 'Featured'
+                              : _selectedSort == 'best-selling'
+                                  ? 'Best Selling'
+                                  : _selectedSort == 'alphabetically'
+                                      ? 'Alphabetically'
+                                      : _selectedSort == 'price-high-low'
+                                          ? 'Price High to Low'
+                                          : 'Price Low to High',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                        const Icon(Icons.arrow_drop_down, size: 20),
+                      ],
+                    ),
+                  ),
+                  itemBuilder: (BuildContext context) =>
+                      <PopupMenuEntry<String>>[
+                    const PopupMenuItem<String>(
+                      value: 'best-selling',
+                      child: Text('Best Selling'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'alphabetically',
+                      child: Text('Alphabetically'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'price-high-low',
+                      child: Text('Price High to Low'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'price-low-high',
+                      child: Text('Price Low to High'),
+                    ),
                   ],
-                  disabled: true,
-                )
+                ),
               ]),
             ),
             GridView.count(

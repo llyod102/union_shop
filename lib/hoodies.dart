@@ -35,6 +35,8 @@ class _HoodiesState extends State<Hoodies> {
   final TextEditingController _emailController = TextEditingController();
   String?
       _selectedFilter; // null = show all, 'dark' = dark clothing, 'bright' = bright clothing
+  String?
+      _selectedSort; // 'featured', 'best-selling', 'alphabetically', 'price-high-low', 'price-low-high'
 
   List<Hoodie> get filteredHoodies {
     if (_selectedFilter == null) {
@@ -53,6 +55,31 @@ class _HoodiesState extends State<Hoodies> {
           .toList();
     }
     return hoodies;
+  }
+
+  List<Hoodie> get sortedAndFilteredHoodies {
+    List<Hoodie> result = List.from(filteredHoodies);
+
+    if (_selectedSort == 'best-selling') {
+      // Keep original order (assuming it's already sorted by best selling)
+      return result;
+    } else if (_selectedSort == 'alphabetically') {
+      result.sort((a, b) => a.title.compareTo(b.title));
+    } else if (_selectedSort == 'price-high-low') {
+      result.sort((a, b) {
+        double priceA = double.parse(a.price.replaceAll('£', ''));
+        double priceB = double.parse(b.price.replaceAll('£', ''));
+        return priceB.compareTo(priceA);
+      });
+    } else if (_selectedSort == 'price-low-high') {
+      result.sort((a, b) {
+        double priceA = double.parse(a.price.replaceAll('£', ''));
+        double priceB = double.parse(b.price.replaceAll('£', ''));
+        return priceA.compareTo(priceB);
+      });
+    }
+
+    return result;
   }
 
   final List<Hoodie> hoodies = [
@@ -375,16 +402,53 @@ class _HoodiesState extends State<Hoodies> {
                   section: 'Sort By',
                   disabled: true,
                 ),
-                const HomeButtonSections(
-                  section: 'Featured',
-                  dropdownItems: [
-                    "Best Selling",
-                    "Alphabetically",
-                    "Price High to low",
-                    "Price low to High"
+                PopupMenuButton<String>(
+                  onSelected: (String value) {
+                    setState(() {
+                      _selectedSort = value;
+                    });
+                  },
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    child: Row(
+                      children: [
+                        Text(
+                          _selectedSort == null
+                              ? 'Featured'
+                              : _selectedSort == 'best-selling'
+                                  ? 'Best Selling'
+                                  : _selectedSort == 'alphabetically'
+                                      ? 'Alphabetically'
+                                      : _selectedSort == 'price-high-low'
+                                          ? 'Price High to Low'
+                                          : 'Price Low to High',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                        const Icon(Icons.arrow_drop_down, size: 20),
+                      ],
+                    ),
+                  ),
+                  itemBuilder: (BuildContext context) =>
+                      <PopupMenuEntry<String>>[
+                    const PopupMenuItem<String>(
+                      value: 'best-selling',
+                      child: Text('Best Selling'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'alphabetically',
+                      child: Text('Alphabetically'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'price-high-low',
+                      child: Text('Price High to Low'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'price-low-high',
+                      child: Text('Price Low to High'),
+                    ),
                   ],
-                  disabled: true,
-                )
+                ),
               ]),
             ),
 
@@ -398,9 +462,9 @@ class _HoodiesState extends State<Hoodies> {
                 mainAxisSpacing: 48,
                 childAspectRatio: 0.7,
               ),
-              itemCount: filteredHoodies.length,
+              itemCount: sortedAndFilteredHoodies.length,
               itemBuilder: (context, index) {
-                final hoodie = filteredHoodies[index];
+                final hoodie = sortedAndFilteredHoodies[index];
                 return GestureDetector(
                   onTap: () {
                     Navigator.push(

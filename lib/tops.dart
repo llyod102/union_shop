@@ -35,6 +35,8 @@ class _TopsState extends State<Tops> {
   final TextEditingController _emailController = TextEditingController();
   String?
       _selectedFilter; // null = show all, 'dark' = dark clothing, 'bright' = bright clothing
+  String?
+      _selectedSort; // 'featured', 'best-selling', 'alphabetically', 'price-high-low', 'price-low-high'
 
   List<Top> get filteredTops {
     if (_selectedFilter == null) {
@@ -53,6 +55,31 @@ class _TopsState extends State<Tops> {
           .toList();
     }
     return tops;
+  }
+
+  List<Top> get sortedAndFilteredTops {
+    List<Top> result = List.from(filteredTops);
+
+    if (_selectedSort == 'best-selling') {
+      // Keep original order (assuming it's already sorted by best selling)
+      return result;
+    } else if (_selectedSort == 'alphabetically') {
+      result.sort((a, b) => a.title.compareTo(b.title));
+    } else if (_selectedSort == 'price-high-low') {
+      result.sort((a, b) {
+        double priceA = double.parse(a.price.replaceAll('£', ''));
+        double priceB = double.parse(b.price.replaceAll('£', ''));
+        return priceB.compareTo(priceA);
+      });
+    } else if (_selectedSort == 'price-low-high') {
+      result.sort((a, b) {
+        double priceA = double.parse(a.price.replaceAll('£', ''));
+        double priceB = double.parse(b.price.replaceAll('£', ''));
+        return priceA.compareTo(priceB);
+      });
+    }
+
+    return result;
   }
 
   final List<Top> tops = <Top>[
@@ -374,16 +401,53 @@ class _TopsState extends State<Tops> {
                   section: 'Sort By',
                   disabled: true,
                 ),
-                const HomeButtonSections(
-                  section: 'Featured',
-                  dropdownItems: [
-                    "Best Selling",
-                    "Alphabetically",
-                    "Price High to low",
-                    "Price low to High"
+                PopupMenuButton<String>(
+                  onSelected: (String value) {
+                    setState(() {
+                      _selectedSort = value;
+                    });
+                  },
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    child: Row(
+                      children: [
+                        Text(
+                          _selectedSort == null
+                              ? 'Featured'
+                              : _selectedSort == 'best-selling'
+                                  ? 'Best Selling'
+                                  : _selectedSort == 'alphabetically'
+                                      ? 'Alphabetically'
+                                      : _selectedSort == 'price-high-low'
+                                          ? 'Price High to Low'
+                                          : 'Price Low to High',
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                        const Icon(Icons.arrow_drop_down, size: 20),
+                      ],
+                    ),
+                  ),
+                  itemBuilder: (BuildContext context) =>
+                      <PopupMenuEntry<String>>[
+                    const PopupMenuItem<String>(
+                      value: 'best-selling',
+                      child: Text('Best Selling'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'alphabetically',
+                      child: Text('Alphabetically'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'price-high-low',
+                      child: Text('Price High to Low'),
+                    ),
+                    const PopupMenuItem<String>(
+                      value: 'price-low-high',
+                      child: Text('Price Low to High'),
+                    ),
                   ],
-                  disabled: true,
-                )
+                ),
               ]),
             ),
             const SizedBox(height: 48),
@@ -396,9 +460,9 @@ class _TopsState extends State<Tops> {
                 mainAxisSpacing: 48,
                 childAspectRatio: 0.7,
               ),
-              itemCount: filteredTops.length,
+              itemCount: sortedAndFilteredTops.length,
               itemBuilder: (context, index) {
-                final top = filteredTops[index];
+                final top = sortedAndFilteredTops[index];
                 return GestureDetector(
                   onTap: () {
                     Navigator.push(
