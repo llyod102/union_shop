@@ -164,7 +164,9 @@ class _HomeButtonSectionsState extends State<HomeButtonSections> {
                   final lower = value.toLowerCase();
                   if (lower == 'clothing collection') {
                     Navigator.pushNamed(context, '/clothing_collections');
-                  } else {}
+                  } else if (lower == 'personalization') {
+                    Navigator.pushNamed(context, '/personalisation');
+                  }
                   // Clear selection after navigation
                   Future.delayed(Duration.zero, () {
                     _controller.clear();
