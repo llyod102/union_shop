@@ -12,11 +12,15 @@ class _PersonilsationPageState extends State<PersonilsationPage> {
   bool _isSearching = false;
   final TextEditingController _searchController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _quantityController =
+      TextEditingController(text: '1');
+  String _selectedDesign = 'One line of text';
 
   @override
   void dispose() {
     _searchController.dispose();
     _emailController.dispose();
+    _quantityController.dispose();
     super.dispose();
   }
 
@@ -26,6 +30,25 @@ class _PersonilsationPageState extends State<PersonilsationPage> {
 
   void placeholderCallbackForButtons() {
     // This is the event handler for buttons that don't work yet
+  }
+
+  double _calculatePrice() {
+    double basePrice = 25.00;
+    double priceIncrease = 0;
+
+    if (_selectedDesign == 'One line of text') {
+      priceIncrease = 0;
+    } else if (_selectedDesign == 'Two line of text') {
+      priceIncrease = 2.00;
+    } else if (_selectedDesign == 'Three lines of text') {
+      priceIncrease = 4.00;
+    } else if (_selectedDesign == 'Four lines of text') {
+      priceIncrease = 6.00;
+    } else if (_selectedDesign == 'Small logo') {
+      priceIncrease = 3.00;
+    }
+
+    return basePrice + priceIncrease;
   }
 
   @override
@@ -211,22 +234,21 @@ class _PersonilsationPageState extends State<PersonilsationPage> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  // Product image
-                  Container(
-                    height: 300,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.grey[200],
-                    ),
+                  // Product image with Card elevation
+                  Card(
+                    elevation: 2,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.network(
                         'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=500&h=500&fit=crop',
+                        width: double.infinity,
+                        height: 300,
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return Container(
                             color: Colors.grey[300],
+                            width: double.infinity,
+                            height: 300,
                             child: const Center(
                               child: Icon(Icons.image_not_supported,
                                   color: Colors.grey),
@@ -253,7 +275,7 @@ class _PersonilsationPageState extends State<PersonilsationPage> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      '£25.00',
+                      '£${_calculatePrice().toStringAsFixed(2)}',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             color: const Color(0xFF4d2963),
                             fontWeight: FontWeight.bold,
@@ -291,16 +313,24 @@ class _PersonilsationPageState extends State<PersonilsationPage> {
                     ),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<String>(
-                        value: 'Template',
+                        value: _selectedDesign,
                         isExpanded: true,
-                        items: ['Template', 'Upload Design', 'Photo Print']
+                        items: [
+                          'One line of text',
+                          'Two line of text',
+                          'Three lines of text',
+                          'Four lines of text',
+                          'Small logo'
+                        ]
                             .map((option) => DropdownMenuItem<String>(
                                   value: option,
                                   child: Text(option),
                                 ))
                             .toList(),
                         onChanged: (value) {
-                          setState(() {});
+                          setState(() {
+                            _selectedDesign = value!;
+                          });
                         },
                       ),
                     ),
@@ -329,7 +359,7 @@ class _PersonilsationPageState extends State<PersonilsationPage> {
                       child: DropdownButton<String>(
                         value: 'M',
                         isExpanded: true,
-                        items: ['XS', 'S', 'M', 'L', 'XL', 'XXL']
+                        items: ['XS', 'S', 'M', 'L']
                             .map((size) => DropdownMenuItem<String>(
                                   value: size,
                                   child: Text(size),
@@ -342,12 +372,55 @@ class _PersonilsationPageState extends State<PersonilsationPage> {
                     ),
                   ),
                   const SizedBox(height: 24),
+                  // Quantity selection
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Quantity',
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  SizedBox(
+                    width: 120,
+                    child: TextField(
+                      controller: _quantityController,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey[300]!),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 12, vertical: 8),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
                   // Add to Cart button
                   SizedBox(
                     width: double.infinity,
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
+                        int quantity =
+                            int.tryParse(_quantityController.text) ?? 1;
+                        double totalPrice = _calculatePrice();
+                        String priceString =
+                            '£${totalPrice.toStringAsFixed(2)}';
+
+                        cartItems.add(CartItem(
+                          title: 'Custom Personalization',
+                          price: priceString,
+                          imageUrl:
+                              'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=500&h=500&fit=crop',
+                          design: _selectedDesign,
+                          size: 'M',
+                          quantity: quantity,
+                        ));
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('Personalization added to cart!'),
