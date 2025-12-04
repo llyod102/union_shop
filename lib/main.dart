@@ -400,6 +400,9 @@ class _HeroSliderState extends State<HeroSlider> {
                   } else if (slide.buttonText.toLowerCase() ==
                       "browse collection") {
                     Navigator.pushNamed(context, '/clothing_collections');
+                  } else if (slide.buttonText.toLowerCase() ==
+                      "find out more") {
+                    Navigator.pushNamed(context, '/personalisation');
                   }
                   return;
                 },
