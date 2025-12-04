@@ -10,7 +10,7 @@ import 'package:union_shop/everdayitems.dart';
 import 'package:union_shop/merchandise.dart';
 import 'package:union_shop/sales.dart';
 import 'package:union_shop/authentication.dart';
-
+import 'package:union_shop/cart_page.dart';
 import 'dart:async';
 
 void main() {
@@ -44,6 +44,7 @@ class UnionShopApp extends StatelessWidget {
         '/sales': (context) => const Sales(),
         '/merchandise': (context) => const Merchandise(),
         '/authentication': (context) => const Authentication(),
+        '/cart': (context) => const CartPage(),
       },
     );
   }
