@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/main.dart';
-import 'package:flutter/gestures.dart';
 
 class ProductPage extends StatefulWidget {
   final String? title;

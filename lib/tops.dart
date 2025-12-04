@@ -250,18 +250,56 @@ class _TopsState extends State<Tops> {
                   price: '£20.00',
                   imageUrl:
                       'https://copilot.microsoft.com/th/id/BCO.02f7f730-06eb-4613-a1ca-8c516e7e3112.png',
+                  thumbnailImages: [
+                    'https://copilot.microsoft.com/th/id/BCO.02f7f730-06eb-4613-a1ca-8c516e7e3112.png',
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFIZtOL1TneWY8D6-LX9SiSYOMivBFFjtbnA&s',
+                    'https://images-platform.99static.com//4kB4IRSK3O3Q2t2tO_LKVAxT3dM=/0x65:918x983/fit-in/500x500/99designs-contests-attachments/56/56970/attachment_56970114',
+                    'https://backyarddesign.co.uk/wp-content/uploads/2021/10/BYD-T-BATCH-BLACK-Front-1024x683.jpg'
+                  ],
+                  description: "Nice black t Shirts",
+                  designOptions: [
+                    'Plain',
+                    'Engineering',
+                    'Essentials',
+                    'Backyard'
+                  ],
                 ),
                 ProductCard(
-                  title: 'White Shirt',
-                  price: '£15.00',
-                  imageUrl:
+                    title: 'White Shirt',
+                    price: '£15.00',
+                    imageUrl:
+                        'https://cdn11.bigcommerce.com/s-jank4pe/images/stencil/1280w/products/676/7573/J180M_White_FT__51579.1460542956.jpg?c=2',
+                    thumbnailImages: [
                       'https://cdn11.bigcommerce.com/s-jank4pe/images/stencil/1280w/products/676/7573/J180M_White_FT__51579.1460542956.jpg?c=2',
-                ),
+                      'https://www.weareoi.com/cdn/shop/files/HorizonT-Shirt-1_2048x.jpg?v=1753991299',
+                      'https://cdn.dribbble.com/userupload/39855993/file/original-3971290b7a813156b86298f9a0350411.jpg?format=webp&resize=400x300&vertical=center',
+                      'https://nras.org.uk/wp-content/uploads/sites/2/2024/10/White-Tee-1.jpg'
+                    ],
+                    description: "Nice White t shirts",
+                    designOptions: [
+                      'plain',
+                      'Distinct;',
+                      'Smart TShirt Mockup',
+                      'NRAS'
+                    ]),
                 ProductCard(
                   title: 'Grey Shirt',
                   price: '£20.00',
                   imageUrl:
                       'https://www.urbanindustry.co.uk/cdn/shop/products/UrbanIndustry_Organic_TShirt_Grey_01.jpg?v=1755864422',
+                  description: "Nice Grey T-shirts",
+                  thumbnailImages: [
+                    'https://www.urbanindustry.co.uk/cdn/shop/products/UrbanIndustry_Organic_TShirt_Grey_01.jpg?v=1755864422',
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdN5F5_KEXap4jD-eC79tsZKrbyP-mXHxo2Q&s',
+                    'https://www.dontfeedthebears.co.uk/cdn/shop/files/mountains-grey-tee-2.jpg?v=1760883315&width=1080',
+                    'https://sites.create-cdn.net/siteimages/64/6/3/646370/21/1/7/21171785/853x1000.png?1725269398'
+                  ],
+                  designOptions: [
+                    'Plain',
+                    'Your design here',
+                    'Dont Feed the Bears',
+                    'Boxy Fit'
+                  ],
                 ),
                 ProductCard(
                   title: 'Blue Shirt',
