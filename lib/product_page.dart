@@ -539,7 +539,7 @@ class _ProductPageState extends State<ProductPage> {
                         cartItems.add(CartItem(
                           title: widget.title ?? 'Product',
                           price: widget.price ?? '£0.00',
-                          imageUrl: widget.imageUrl ?? '',
+                          imageUrl: _thumbnailImages[_selectedImageIndex],
                           design: _selectedDesign,
                           size: _selectedSize,
                           quantity: quantity,
