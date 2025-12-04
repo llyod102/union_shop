@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:union_shop/main.dart';
+import 'package:union_shop/product_page.dart';
 
 class Hoodies extends StatefulWidget {
   const Hoodies({super.key});
@@ -388,13 +389,82 @@ class _HoodiesState extends State<Hoodies> {
             ),
 
             const SizedBox(height: 48),
-            GridView.count(
+            GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: MediaQuery.of(context).size.width > 600 ? 2 : 1,
-              crossAxisSpacing: 24,
-              mainAxisSpacing: 48,
-              children: const [],
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: MediaQuery.of(context).size.width > 600 ? 2 : 1,
+                crossAxisSpacing: 24,
+                mainAxisSpacing: 48,
+                childAspectRatio: 0.7,
+              ),
+              itemCount: filteredHoodies.length,
+              itemBuilder: (context, index) {
+                final hoodie = filteredHoodies[index];
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductPage(
+                          title: hoodie.title,
+                          price: hoodie.price,
+                          imageUrl: hoodie.imageUrl,
+                          thumbnailImages: hoodie.thumbnailImages,
+                          designOptions: hoodie.designOptions,
+                          description: hoodie.description,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Card(
+                    elevation: 2,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Image.network(
+                            hoodie.imageUrl,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                color: Colors.grey[300],
+                                child: const Center(
+                                  child: Icon(Icons.image_not_supported),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                hoodie.title,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                hoodie.price,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
             ),
             Container(
               width: double.infinity,
