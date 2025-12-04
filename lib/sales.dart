@@ -274,17 +274,10 @@ class _SalesState extends State<Sales> {
                             section: "Home",
                           ),
                           const HomeButtonSections(
-                            section: "Shop",
-                            dropdownItems: [
-                              "Clothing",
-                              "Merchandise",
-                              "Halloween",
-                              "Signature & Essentail Range",
-                              "Portsmouth City Collection",
-                              "Pride Collection",
-                              "Graduation"
-                            ],
-                          ),
+                              section: "Shop",
+                              dropdownItems: [
+                                "Clothing Collection",
+                              ]),
                           const HomeButtonSections(
                             section: "The Print Shack",
                             dropdownItems: ["About", "Personalization"],

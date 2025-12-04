@@ -146,13 +146,7 @@ class _EverdayitemsState extends State<Everdayitems> {
                           const HomeButtonSections(
                             section: "Shop",
                             dropdownItems: [
-                              "Clothing",
-                              "Merchandise",
-                              "Halloween",
-                              "Signature & Essentail Range",
-                              "Portsmouth City Collection",
-                              "Pride Collection",
-                              "Graduation"
+                              "Clothing Collection",
                             ],
                           ),
                           const HomeButtonSections(

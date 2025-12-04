@@ -84,13 +84,7 @@ class _ClothingCollectionsState extends State<ClothingCollections> {
                           const HomeButtonSections(
                             section: "Shop",
                             dropdownItems: [
-                              "Clothing",
-                              "Merchandise",
-                              "Halloween",
-                              "Signature & Essentail Range",
-                              "Portsmouth City Collection",
-                              "Pride Collection",
-                              "Graduation"
+                              "Clothing Collection",
                             ],
                           ),
                           const HomeButtonSections(

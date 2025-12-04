@@ -162,11 +162,9 @@ class _HomeButtonSectionsState extends State<HomeButtonSections> {
                   if (value == null) return;
                   // Route based on selected dropdown item
                   final lower = value.toLowerCase();
-                  if (lower == 'clothing') {
+                  if (lower == 'clothing collection') {
                     Navigator.pushNamed(context, '/clothing_collections');
-                  } else {
-                    Navigator.pushNamed(context, '/product');
-                  }
+                  } else {}
                   // Clear selection after navigation
                   Future.delayed(Duration.zero, () {
                     _controller.clear();
@@ -502,13 +500,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           const HomeButtonSections(
                             section: "Shop",
                             dropdownItems: [
-                              "Clothing",
-                              "Merchandise",
-                              "Halloween",
-                              "Signature & Essentail Range",
-                              "Portsmouth City Collection",
-                              "Pride Collection",
-                              "Graduation"
+                              "Clothing Collection",
                             ],
                           ),
                           const HomeButtonSections(
