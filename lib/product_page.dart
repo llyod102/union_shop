@@ -534,7 +534,23 @@ class _ProductPageState extends State<ProductPage> {
                     width: double.infinity,
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        int quantity = int.tryParse(_quantityController.text) ?? 1;
+                        cartItems.add(CartItem(
+                          title: widget.title ?? 'Product',
+                          price: widget.price ?? '£0.00',
+                          imageUrl: widget.imageUrl ?? '',
+                          design: _selectedDesign,
+                          size: _selectedSize,
+                          quantity: quantity,
+                        ));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('${widget.title} added to cart!'),
+                            duration: const Duration(seconds: 2),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF4d2963),
                         foregroundColor: Colors.white,
