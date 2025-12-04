@@ -536,10 +536,18 @@ class _ProductPageState extends State<ProductPage> {
                       onPressed: () {
                         int quantity =
                             int.tryParse(_quantityController.text) ?? 1;
+                        // Get image based on selected design
+                        int designIndex =
+                            _designOptions.indexOf(_selectedDesign ?? '');
+                        String cartImageUrl = (designIndex >= 0 &&
+                                designIndex < _thumbnailImages.length)
+                            ? _thumbnailImages[designIndex]
+                            : widget.imageUrl ?? '';
+
                         cartItems.add(CartItem(
                           title: widget.title ?? 'Product',
                           price: widget.price ?? '£0.00',
-                          imageUrl: _thumbnailImages[_selectedImageIndex],
+                          imageUrl: cartImageUrl,
                           design: _selectedDesign,
                           size: _selectedSize,
                           quantity: quantity,
