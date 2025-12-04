@@ -16,7 +16,7 @@ class Hoodie {
   final List<String> thumbnailImages;
   final String description;
   final List<String> designOptions;
-  final String colorCategory; // e.g. 'dark', 'grey', 'white', 'blue'
+  final String colorCategory;
 
   Hoodie({
     required this.title,
@@ -33,8 +33,7 @@ class _HoodiesState extends State<Hoodies> {
   bool _isSearching = false;
   final TextEditingController _searchController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  String?
-      _selectedFilter; // null = show all, 'dark' = dark clothing, 'bright' = bright clothing
+  String? _selectedFilter;
   String?
       _selectedSort; // 'featured', 'best-selling', 'alphabetically', 'price-high-low', 'price-low-high'
 

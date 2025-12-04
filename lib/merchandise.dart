@@ -8,12 +8,70 @@ class Merchandise extends StatefulWidget {
   State<Merchandise> createState() => _MerchandiseState();
 }
 
+class Product {
+  final String title;
+  final String price;
+  final String imageUrl;
+
+  Product({required this.title, required this.price, required this.imageUrl});
+}
+
 class _MerchandiseState extends State<Merchandise> {
   bool _isSearching = false;
   final TextEditingController _searchController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   String?
       _selectedSort; // 'featured', 'best-selling', 'alphabetically', 'price-high-low', 'price-low-high'
+
+  final List<Product> products = [
+    Product(
+      title: 'Headphones',
+      price: '£40.00',
+      imageUrl:
+          'https://copilot.microsoft.com/th/id/BCO.ae4ea94d-5daa-48e4-8afe-c29e7c72522f.png',
+    ),
+    Product(
+      title: 'Post Card',
+      price: '£30.00',
+      imageUrl:
+          'https://copilot.microsoft.com/th/id/BCO.bf85a3bc-7485-49e2-80b2-039f6986ec0a.png',
+    ),
+    Product(
+      title: 'Plushy',
+      price: '£25.00',
+      imageUrl: 'https://i.redd.it/rdj542mmzywb1.jpg',
+    ),
+    Product(
+      title: 'Toy',
+      price: '£35.00',
+      imageUrl:
+          'https://manchestermuseumshop.com/cdn/shop/files/Keel-Toys-Stan-Small_02d40031-c0ff-452e-bd35-d4b931091da6_1445x.jpg?v=1694443600',
+    ),
+  ];
+
+  List<Product> get sortedProducts {
+    List<Product> result = List.from(products);
+
+    if (_selectedSort == 'best-selling') {
+      return result;
+    } else if (_selectedSort == 'alphabetically') {
+      result.sort((a, b) => a.title.compareTo(b.title));
+    } else if (_selectedSort == 'price-high-low') {
+      result.sort((a, b) {
+        double priceA = double.parse(a.price.replaceAll('£', ''));
+        double priceB = double.parse(b.price.replaceAll('£', ''));
+        return priceB.compareTo(priceA);
+      });
+    } else if (_selectedSort == 'price-low-high') {
+      result.sort((a, b) {
+        double priceA = double.parse(a.price.replaceAll('£', ''));
+        double priceB = double.parse(b.price.replaceAll('£', ''));
+        return priceA.compareTo(priceB);
+      });
+    }
+
+    return result;
+  }
 
   @override
   void dispose() {
@@ -278,37 +336,24 @@ class _MerchandiseState extends State<Merchandise> {
                 ),
               ]),
             ),
-            GridView.count(
+            GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: MediaQuery.of(context).size.width > 600 ? 2 : 1,
-              crossAxisSpacing: 24,
-              mainAxisSpacing: 48,
-              children: const [
-                ProductCard(
-                  title: 'Headphones',
-                  price: '£40.00',
-                  imageUrl:
-                      'https://copilot.microsoft.com/th/id/BCO.ae4ea94d-5daa-48e4-8afe-c29e7c72522f.png',
-                ),
-                ProductCard(
-                  title: 'Post Card',
-                  price: '£30.00',
-                  imageUrl:
-                      'https://copilot.microsoft.com/th/id/BCO.bf85a3bc-7485-49e2-80b2-039f6986ec0a.png',
-                ),
-                ProductCard(
-                  title: 'Plushy',
-                  price: '£25.00',
-                  imageUrl: 'https://i.redd.it/rdj542mmzywb1.jpg',
-                ),
-                ProductCard(
-                  title: 'Toy',
-                  price: '£35.00',
-                  imageUrl:
-                      'https://manchestermuseumshop.com/cdn/shop/files/Keel-Toys-Stan-Small_02d40031-c0ff-452e-bd35-d4b931091da6_1445x.jpg?v=1694443600',
-                ),
-              ],
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: MediaQuery.of(context).size.width > 600 ? 2 : 1,
+                crossAxisSpacing: 24,
+                mainAxisSpacing: 48,
+                childAspectRatio: 0.7,
+              ),
+              itemCount: sortedProducts.length,
+              itemBuilder: (context, index) {
+                final product = sortedProducts[index];
+                return ProductCard(
+                  title: product.title,
+                  price: product.price,
+                  imageUrl: product.imageUrl,
+                );
+              },
             ),
             Container(
               width: double.infinity,

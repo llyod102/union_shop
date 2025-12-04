@@ -8,12 +8,99 @@ class Sales extends StatefulWidget {
   State<Sales> createState() => _SalesState();
 }
 
+class SaleProduct {
+  final String title;
+  final String price;
+  final String imageUrl;
+  final List<String>? thumbnailImages;
+  final List<String>? designOptions;
+  final String? description;
+
+  SaleProduct({
+    required this.title,
+    required this.price,
+    required this.imageUrl,
+    this.thumbnailImages,
+    this.designOptions,
+    this.description,
+  });
+}
+
 class _SalesState extends State<Sales> {
   bool _isSearching = false;
   final TextEditingController _searchController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   String?
       _selectedSort; // 'featured', 'best-selling', 'alphabetically', 'price-high-low', 'price-low-high'
+
+  final List<SaleProduct> products = [
+    SaleProduct(
+      title: 'Classic Sweat Shirts',
+      price: '£20.00',
+      imageUrl:
+          'https://s.alicdn.com/@sc04/kf/U4bb4ddac6e314a1a98bfde968cecd69fh/No-Brand-Name-Clothes-Men-Hoodies-Sweater-Hoodie-Sweat-shirt-Unique-Unbranded-Comfy-Cozy-Hoodies-Sweat-Shirt-for-Men.jpg_300x300.jpg',
+      thumbnailImages: [
+        'https://s.alicdn.com/@sc04/kf/U4bb4ddac6e314a1a98bfde968cecd69fh/No-Brand-Name-Clothes-Men-Hoodies-Sweater-Hoodie-Sweat-shirt-Unique-Unbranded-Comfy-Cozy-Hoodies-Sweat-Shirt-for-Men.jpg_300x300.jpg',
+        'https://www.ariashop.co.uk/cdn/shop/files/white.jpg?v=1692631506&width=800',
+        'https://ml.thcdn.com/images/v2/productimg/original/14314656-2445257485007254.jpg?width=924&height=1294',
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvexA5LiaB1LtMrPJi1tow24yFBheErqzrGA&s',
+      ],
+      designOptions: ['Grey', 'White', 'Black', 'Yellow'],
+      description:
+          'Comfortable dark hoodie perfect for any occasion. Made from high-quality materials for ultimate comfort and durability.',
+    ),
+    SaleProduct(
+      title: 'White Hoodie',
+      price: '£18.00',
+      imageUrl:
+          'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
+      thumbnailImages: [
+        'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
+      ],
+    ),
+    SaleProduct(
+      title: 'Grey hoodie',
+      price: '£10.00',
+      imageUrl:
+          'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
+      thumbnailImages: [
+        'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
+      ],
+    ),
+    SaleProduct(
+      title: 'Blue Hoodie',
+      price: '£25.00',
+      imageUrl:
+          'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
+      thumbnailImages: [
+        'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
+      ],
+    ),
+  ];
+
+  List<SaleProduct> get sortedProducts {
+    List<SaleProduct> result = List.from(products);
+
+    if (_selectedSort == 'best-selling') {
+      return result;
+    } else if (_selectedSort == 'alphabetically') {
+      result.sort((a, b) => a.title.compareTo(b.title));
+    } else if (_selectedSort == 'price-high-low') {
+      result.sort((a, b) {
+        double priceA = double.parse(a.price.replaceAll('£', ''));
+        double priceB = double.parse(b.price.replaceAll('£', ''));
+        return priceB.compareTo(priceA);
+      });
+    } else if (_selectedSort == 'price-low-high') {
+      result.sort((a, b) {
+        double priceA = double.parse(a.price.replaceAll('£', ''));
+        double priceB = double.parse(b.price.replaceAll('£', ''));
+        return priceA.compareTo(priceB);
+      });
+    }
+
+    return result;
+  }
 
   @override
   void dispose() {
@@ -299,70 +386,27 @@ class _SalesState extends State<Sales> {
               ]),
             ),
             const SizedBox(height: 48),
-            GridView.count(
+            GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: MediaQuery.of(context).size.width > 600 ? 2 : 1,
-              crossAxisSpacing: 24,
-              mainAxisSpacing: 48,
-              children: const [
-                ProductCard(
-                  title: 'Classic Sweat Shirts',
-                  price: '£3̶5̶:̶0̶0̶  £20.00',
-                  imageUrl:
-                      'https://s.alicdn.com/@sc04/kf/U4bb4ddac6e314a1a98bfde968cecd69fh/No-Brand-Name-Clothes-Men-Hoodies-Sweater-Hoodie-Sweat-shirt-Unique-Unbranded-Comfy-Cozy-Hoodies-Sweat-Shirt-for-Men.jpg_300x300.jpg',
-                  thumbnailImages: [
-                    'https://s.alicdn.com/@sc04/kf/U4bb4ddac6e314a1a98bfde968cecd69fh/No-Brand-Name-Clothes-Men-Hoodies-Sweater-Hoodie-Sweat-shirt-Unique-Unbranded-Comfy-Cozy-Hoodies-Sweat-Shirt-for-Men.jpg_300x300.jpg',
-                    'https://www.ariashop.co.uk/cdn/shop/files/white.jpg?v=1692631506&width=800',
-                    'https://ml.thcdn.com/images/v2/productimg/original/14314656-2445257485007254.jpg?width=924&height=1294',
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvexA5LiaB1LtMrPJi1tow24yFBheErqzrGA&s',
-                  ],
-                  designOptions: [
-                    'Grey',
-                    'White',
-                    'Black',
-                    'Yellow',
-                  ],
-                  description:
-                      'Comfortable dark hoodie perfect for any occasion. Made from high-quality materials for ultimate comfort and durability.',
-                ),
-                ProductCard(
-                  title: 'White Hoodie',
-                  price: '£3̶5̶:̶0̶0̶  £18.00',
-                  imageUrl:
-                      'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
-                  thumbnailImages: [
-                    'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
-                    'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
-                    'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
-                    'https://images.pexels.com/photos/8217544/pexels-photo-8217544.jpeg?cs=srgb&dl=pexels-mart-production-8217544.jpg&fm=jpg',
-                  ],
-                ),
-                ProductCard(
-                  title: 'Grey hoodie',
-                  price: '£3̶5̶:̶0̶0̶  £10.00',
-                  imageUrl:
-                      'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
-                  thumbnailImages: [
-                    'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
-                    'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
-                    'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
-                    'https://images.unsplash.com/photo-1556821840-3a63f95609a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9vZGllfGVufDB8fDB8fHww',
-                  ],
-                ),
-                ProductCard(
-                  title: 'Blue Hoodie',
-                  price: '£3̶5̶:̶0̶0̶  £25.00',
-                  imageUrl:
-                      'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
-                  thumbnailImages: [
-                    'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
-                    'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
-                    'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
-                    'https://images.squarespace-cdn.com/content/v1/5967e798893fc01de25613bb/1546242458330-W4BUY02Q9KQM399WD7OP/JH001+COR+FRONT.jpg?format=1000w',
-                  ],
-                ),
-              ],
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: MediaQuery.of(context).size.width > 600 ? 2 : 1,
+                crossAxisSpacing: 24,
+                mainAxisSpacing: 48,
+                childAspectRatio: 0.7,
+              ),
+              itemCount: sortedProducts.length,
+              itemBuilder: (context, index) {
+                final product = sortedProducts[index];
+                return ProductCard(
+                  title: product.title,
+                  price: product.price,
+                  imageUrl: product.imageUrl,
+                  thumbnailImages: product.thumbnailImages ?? [],
+                  designOptions: product.designOptions ?? [],
+                  description: product.description ?? '',
+                );
+              },
             ),
 
             Container(

@@ -8,12 +8,72 @@ class Everdayitems extends StatefulWidget {
   State<Everdayitems> createState() => _EverdayitemsState();
 }
 
+class EverydayProduct {
+  final String title;
+  final String price;
+  final String imageUrl;
+
+  EverydayProduct(
+      {required this.title, required this.price, required this.imageUrl});
+}
+
 class _EverdayitemsState extends State<Everdayitems> {
   bool _isSearching = false;
   final TextEditingController _searchController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   String?
       _selectedSort; // 'featured', 'best-selling', 'alphabetically', 'price-high-low', 'price-low-high'
+
+  final List<EverydayProduct> products = [
+    EverydayProduct(
+      title: 'Watch',
+      price: '£40.00',
+      imageUrl:
+          'https://copilot.microsoft.com/th/id/BCO.a8d40398-6f22-43c0-b3df-43cdb0ed7c3f.png',
+    ),
+    EverydayProduct(
+      title: 'Laptop',
+      price: '£1000.00',
+      imageUrl:
+          'https://copilot.microsoft.com/th/id/BCO.12e8ae44-f76f-48ed-850a-3d45db08da85.png',
+    ),
+    EverydayProduct(
+      title: 'Phone',
+      price: '£500.00',
+      imageUrl:
+          'https://copilot.microsoft.com/th/id/BCO.f42b24c9-aed7-4c92-b6fe-a63ea4fc4eec.png',
+    ),
+    EverydayProduct(
+      title: 'Headphone',
+      price: '£100.00',
+      imageUrl:
+          'https://copilot.microsoft.com/th/id/BCO.d1e0fec4-9bfc-4f12-b3fa-3e9bcf9ced5b.png',
+    ),
+  ];
+
+  List<EverydayProduct> get sortedProducts {
+    List<EverydayProduct> result = List.from(products);
+
+    if (_selectedSort == 'best-selling') {
+      return result;
+    } else if (_selectedSort == 'alphabetically') {
+      result.sort((a, b) => a.title.compareTo(b.title));
+    } else if (_selectedSort == 'price-high-low') {
+      result.sort((a, b) {
+        double priceA = double.parse(a.price.replaceAll('£', ''));
+        double priceB = double.parse(b.price.replaceAll('£', ''));
+        return priceB.compareTo(priceA);
+      });
+    } else if (_selectedSort == 'price-low-high') {
+      result.sort((a, b) {
+        double priceA = double.parse(a.price.replaceAll('£', ''));
+        double priceB = double.parse(b.price.replaceAll('£', ''));
+        return priceA.compareTo(priceB);
+      });
+    }
+
+    return result;
+  }
 
   @override
   void dispose() {
@@ -277,38 +337,24 @@ class _EverdayitemsState extends State<Everdayitems> {
                 ),
               ]),
             ),
-            GridView.count(
+            GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: MediaQuery.of(context).size.width > 600 ? 2 : 1,
-              crossAxisSpacing: 24,
-              mainAxisSpacing: 48,
-              children: const [
-                ProductCard(
-                  title: 'Watch',
-                  price: '£40.00',
-                  imageUrl:
-                      'https://copilot.microsoft.com/th/id/BCO.b97e28bf-037b-4f10-9536-569642734943.png',
-                ),
-                ProductCard(
-                  title: 'Jacket',
-                  price: '£30.00',
-                  imageUrl:
-                      'https://api.deepai.org/job-view-file/3c468aa1-79c9-4eb5-a849-fcfec7f546c9/outputs/output.jpg',
-                ),
-                ProductCard(
-                  title: 'Hat',
-                  price: '£20.00',
-                  imageUrl:
-                      'https://www.neweracap.com/cdn/shop/files/60746752_9FORTYAF_LifestyleEnergy_NONLIC_SLT_3QL.jpg?v=1744659809&width=535',
-                ),
-                ProductCard(
-                  title: 'Glasses',
-                  price: '£35.00',
-                  imageUrl:
-                      'https://res.cloudinary.com/dd3imqqn7/image/upload/c_limit,w_1200/f_auto/q_auto/v1733391302/products/rhodes/rhodes-6/file_alo30n?_a=BAVAZGID0',
-                ),
-              ],
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: MediaQuery.of(context).size.width > 600 ? 2 : 1,
+                crossAxisSpacing: 24,
+                mainAxisSpacing: 48,
+                childAspectRatio: 0.7,
+              ),
+              itemCount: sortedProducts.length,
+              itemBuilder: (context, index) {
+                final product = sortedProducts[index];
+                return ProductCard(
+                  title: product.title,
+                  price: product.price,
+                  imageUrl: product.imageUrl,
+                );
+              },
             ),
             Container(
               width: double.infinity,
