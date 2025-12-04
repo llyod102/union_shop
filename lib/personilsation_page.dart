@@ -287,7 +287,7 @@ class _PersonilsationPageState extends State<PersonilsationPage> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      'Create your own custom design with our personalization service. Choose from our templates or upload your own design. Perfect for gifts, events, and personal style!',
+                      'Create your own custom design with our personalization service',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),
