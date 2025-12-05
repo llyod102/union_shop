@@ -46,10 +46,10 @@ void main() {
       expect(find.text('Toy'), findsOneWidget);
 
       // Check for prices
-      expect(find.text('£40'), findsWidgets); // Headphones
-      expect(find.text('£30'), findsOneWidget); // Post Card
-      expect(find.text('£25'), findsOneWidget); // Plushy
-      expect(find.text('£35'), findsOneWidget); // Toy
+      expect(find.text('£40.00'), findsOneWidget); // Headphones
+      expect(find.text('£30.00'), findsOneWidget); // Post Card
+      expect(find.text('£25.00'), findsOneWidget); // Plushy
+      expect(find.text('£35.00'), findsOneWidget); // Toy
     });
 
     testWidgets('Correct number of ProductCard widgets are displayed',
@@ -135,10 +135,10 @@ void main() {
       await tester.pumpAndSettle();
 
       // Check all product prices
-      expect(find.text('£40'), findsWidgets);
-      expect(find.text('£30'), findsOneWidget);
-      expect(find.text('£25'), findsOneWidget);
-      expect(find.text('£35'), findsOneWidget);
+      expect(find.text('£40.00'), findsOneWidget);
+      expect(find.text('£30.00'), findsOneWidget);
+      expect(find.text('£25.00'), findsOneWidget);
+      expect(find.text('£35.00'), findsOneWidget);
     });
 
     testWidgets('Product cards are tappable', (WidgetTester tester) async {

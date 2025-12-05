@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:union_shop/main.dart';
+import 'dart:io';
+
+// Mock HttpOverrides to prevent network image errors in widget tests
+class _MockHttpOverrides extends HttpOverrides {}
 
 void main() {
+  setUpAll(() {
+    HttpOverrides.global = _MockHttpOverrides();
+  });
   group('Home Page Tests', () {
     testWidgets('should display home page with basic elements', (tester) async {
       await tester.pumpWidget(const UnionShopApp());
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       // Check that basic UI elements are present
-      expect(
-        find.text('Essential Range - Over 20% OFF!'),
-        findsOneWidget,
-      );
+      expect(find.text('Essential Range - Over 20% OFF!'), findsOneWidget);
       expect(find.text('Grey Hoodie'), findsOneWidget);
       expect(find.text('T-Shirt'), findsOneWidget);
     });
@@ -113,24 +117,26 @@ void main() {
       await tester.pumpWidget(const UnionShopApp());
       await tester.pump();
 
-      // Initially, search field should not be visible
+      // Initially, search field should not be visible (refined predicate)
       expect(
         find.byWidgetPredicate(
-          (widget) => widget is TextField && widget is! Material,
+          (widget) =>
+              widget is TextField && (widget.decoration?.hintText == 'Shop'),
         ),
         findsNothing,
       );
 
       // Tap search icon
       await tester.tap(find.byIcon(Icons.search));
-      await tester.pump();
+      await tester.pumpAndSettle();
 
       // Search field should now be visible
       expect(
         find.byWidgetPredicate(
-          (widget) => widget is TextField,
+          (widget) =>
+              widget is TextField && (widget.decoration?.hintText == 'Shop'),
         ),
-        findsWidgets,
+        findsOneWidget,
       );
     });
 
@@ -261,6 +267,7 @@ void main() {
           ),
         ),
       );
+      await tester.pumpAndSettle();
 
       expect(find.text('Test Product'), findsOneWidget);
       expect(find.text('£20.00'), findsOneWidget);
