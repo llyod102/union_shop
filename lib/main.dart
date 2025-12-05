@@ -510,7 +510,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           const HomeButtonSections(
                             section: "The Print Shack",
-                            dropdownItems: ["About", "Personalization"],
+                            dropdownItems: ["Personalization"],
                           ),
                           const HomeButtonSections(
                             section: "SALE!",
