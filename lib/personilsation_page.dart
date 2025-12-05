@@ -267,25 +267,22 @@ class _PersonilsationPageState extends State<PersonilsationPage> {
                   // Product image with Card elevation
                   Card(
                     elevation: 2,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.network(
-                        'https://unifury.com/cdn/shop/products/Yourdesignhere_19082022_Thao_32_1200x.png?v=1661314229',
-                        width: double.infinity,
-                        height: 300,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
-                          return Container(
-                            color: Colors.grey[300],
-                            width: double.infinity,
-                            height: 300,
-                            child: const Center(
-                              child: Icon(Icons.image_not_supported,
-                                  color: Colors.grey),
-                            ),
-                          );
-                        },
-                      ),
+                    child: Image.network(
+                      'https://unifury.com/cdn/shop/products/Yourdesignhere_19082022_Thao_32_1200x.png?v=1661314229',
+                      width: double.infinity,
+                      height: 400,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: Colors.grey[300],
+                          width: double.infinity,
+                          height: 400,
+                          child: const Center(
+                            child: Icon(Icons.image_not_supported,
+                                color: Colors.grey),
+                          ),
+                        );
+                      },
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -488,7 +485,7 @@ class _PersonilsationPageState extends State<PersonilsationPage> {
                           title: 'Custom Personalization',
                           price: priceString,
                           imageUrl:
-                              'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=500&h=500&fit=crop',
+                              'https://unifury.com/cdn/shop/products/Yourdesignhere_19082022_Thao_32_1200x.png?v=1661314229',
                           design: _selectedDesign,
                           size: 'M',
                           quantity: quantity,
