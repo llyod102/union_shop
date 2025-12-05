@@ -151,7 +151,7 @@ class _SalesState extends State<Sales> {
         'https://ml.thcdn.com/images/v2/productimg/original/14314656-2445257485007254.jpg?width=924&height=1294',
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvexA5LiaB1LtMrPJi1tow24yFBheErqzrGA&s',
       ],
-      designOptions: ['Grey', 'White', 'Black', 'Yellow'],
+      designOptions: ['Grey', 'White', 'Black', 'Blue'],
       description:
           'Comfortable dark hoodie perfect for any occasion. Made from high-quality materials for ultimate comfort and durability.',
     ),
