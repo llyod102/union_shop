@@ -15,12 +15,42 @@ class _PersonilsationPageState extends State<PersonilsationPage> {
   final TextEditingController _quantityController =
       TextEditingController(text: '1');
   String _selectedDesign = 'One line of text';
+  late List<TextEditingController> _textLineControllers;
+
+  int _getNumberOfLines(String design) {
+    switch (design) {
+      case 'One line of text':
+        return 1;
+      case 'Two line of text':
+        return 2;
+      case 'Three lines of text':
+        return 3;
+      case 'Four lines of text':
+        return 4;
+      case 'Small logo':
+        return 1;
+      default:
+        return 0;
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _textLineControllers = List.generate(
+      _getNumberOfLines(_selectedDesign),
+      (index) => TextEditingController(),
+    );
+  }
 
   @override
   void dispose() {
     _searchController.dispose();
     _emailController.dispose();
     _quantityController.dispose();
+    for (var controller in _textLineControllers) {
+      controller.dispose();
+    }
     super.dispose();
   }
 
@@ -240,7 +270,7 @@ class _PersonilsationPageState extends State<PersonilsationPage> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8),
                       child: Image.network(
-                        'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=500&h=500&fit=crop',
+                        'https://unifury.com/cdn/shop/products/Yourdesignhere_19082022_Thao_32_1200x.png?v=1661314229',
                         width: double.infinity,
                         height: 300,
                         fit: BoxFit.cover,
@@ -330,11 +360,53 @@ class _PersonilsationPageState extends State<PersonilsationPage> {
                         onChanged: (value) {
                           setState(() {
                             _selectedDesign = value!;
+                            // Dispose old controllers and create new ones based on selected design
+                            for (var controller in _textLineControllers) {
+                              controller.dispose();
+                            }
+                            _textLineControllers = List.generate(
+                              _getNumberOfLines(_selectedDesign),
+                              (index) => TextEditingController(),
+                            );
                           });
                         },
                       ),
                     ),
                   ),
+                  const SizedBox(height: 24),
+                  // Dynamic text input fields based on number of lines
+                  if (_textLineControllers.isNotEmpty) ...[
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Text Lines',
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    ...List.generate(
+                      _textLineControllers.length,
+                      (index) => Padding(
+                        padding: const EdgeInsets.only(bottom: 12.0),
+                        child: TextField(
+                          controller: _textLineControllers[index],
+                          maxLines: 1,
+                          decoration: InputDecoration(
+                            hintText: 'Line ${index + 1}',
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.grey[300]!),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 8),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                   const SizedBox(height: 24),
                   // Size selection
                   Align(
