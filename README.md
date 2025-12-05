@@ -147,4 +147,15 @@ Base price: £25.00
 - **Search Not Functional**: The search bar is a UI placeholder and does not perform any product search functionality.
 - **Filter Functionality**: Category filtering only works on the Hoodies and Tops pages, as these were the only categories with multiple product types implemented at the time. Sort functionality (by price and alphabetically) works across all product pages.
 
+## Test Status
+- **Sales Tests**: Tests for the Sales page are failing due to network image loading issues in widget tests.
+- **Merchandise Tests**: Some tests in merchandise_test.dart fail due to:
+  - Network image loading errors (HTTP 400 status in widget tests)
+  - Widget type mismatches (tests expect `Card` widgets but implementation uses `ProductCard`)
+  - Missing network image mocking for `Image.network` widgets
+- **Product Tests**: Some tests in product_test.dart fail due to:
+  - Network image loading errors (HTTP 400 status in widget tests)
+  - Pending timers from unresolved network requests
+- **Home Tests**: Most tests in home_test.dart pass after adding network image mocking and async/await improvements. One remaining test failure: "search icon should toggle search field visibility" due to the search field being visible on initial load rather than hidden.
+
 
