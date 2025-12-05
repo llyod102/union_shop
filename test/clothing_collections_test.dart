@@ -116,7 +116,8 @@ void main() {
       );
 
       // Find and tap the Everyday Items card
-      await tester.tap(find.text('Everyday Items'));
+      await tester.ensureVisible(find.text('Everyday Items'));
+      await tester.tap(find.text('Everyday Items'), warnIfMissed: false);
       await tester.pumpAndSettle();
 
       // Verify navigation
@@ -136,7 +137,8 @@ void main() {
       );
 
       // Find and tap the Merchandise card
-      await tester.tap(find.text('Merchandise'));
+      await tester.ensureVisible(find.text('Merchandise'));
+      await tester.tap(find.text('Merchandise'), warnIfMissed: false);
       await tester.pumpAndSettle();
 
       // Verify navigation
